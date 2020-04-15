@@ -37,7 +37,7 @@ public class AuthorizationServiceConfig extends AuthorizationServerConfigurerAda
                 .refreshTokenValiditySeconds(60 * 60 * 2)
                 .resourceIds("rid")
                 .scopes("all")
-                .secret("123456");
+                .secret("$2a$10$jXQ72CKVIA5G.hhkZfBTa.fAxE.7QStwz85AxQImM1OtiFSO2YXpy");
     }
 
     @Override
