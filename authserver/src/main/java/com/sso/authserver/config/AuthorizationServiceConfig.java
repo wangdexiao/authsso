@@ -60,6 +60,10 @@ public class AuthorizationServiceConfig extends AuthorizationServerConfigurerAda
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         //允许客户端表单身份验证
-        security.allowFormAuthenticationForClients();
+        security
+                ///oauth/check_token 端点你需要在授权服务将这个端点暴露出去，以便资源服务可以进行访问，
+                .tokenKeyAccess("permitAll()")// /oauth/token_key 安全配置
+                .checkTokenAccess("permitAll()") // /oauth/check_token 安全配置
+                .allowFormAuthenticationForClients();
     }
 }
