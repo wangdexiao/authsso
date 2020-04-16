@@ -1,4 +1,4 @@
-package com.sso.demo.controller;
+package com.sso.reserver.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +16,7 @@ public class HelloController {
         return "hello user";
     }
 
-    @GetMapping("hello")
+    @GetMapping("/hello")
     public String hello(){
         return "hello";
     }

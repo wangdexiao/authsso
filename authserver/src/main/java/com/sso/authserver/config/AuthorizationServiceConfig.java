@@ -1,15 +1,20 @@
-package com.sso.demo.authorization;
+package com.sso.authserver.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
+import org.springframework.security.oauth2.provider.code.InMemoryAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 @Configuration
@@ -30,14 +35,18 @@ public class AuthorizationServiceConfig extends AuthorizationServerConfigurerAda
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory()
-                .withClient("client_id")
-                .authorizedGrantTypes("password", "refresh_token")
+        clients.inMemory()// 使用in‐memory存储
+                .withClient("client_id")// client_id
+                .secret(new BCryptPasswordEncoder().encode("123456"))
+                .resourceIds("rid")
+                .authorizedGrantTypes("authorization_code",
+                        "password","client_credentials","implicit","refresh_token")// 该client允许的授权类型
                 .accessTokenValiditySeconds(1800)
                 .refreshTokenValiditySeconds(60 * 60 * 2)
-                .resourceIds("rid")
-                .scopes("all")
-                .secret("$2a$10$jXQ72CKVIA5G.hhkZfBTa.fAxE.7QStwz85AxQImM1OtiFSO2YXpy");
+                .scopes("all")// 允许的授权范围
+                .autoApprove(false)
+                //加上验证回调地址
+                .redirectUris("http://www.baidu.com");
     }
 
     @Override
