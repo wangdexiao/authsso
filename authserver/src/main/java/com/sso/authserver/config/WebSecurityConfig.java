@@ -50,6 +50,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/login*").permitAll()
                 .anyRequest().authenticated()
-                .and().csrf().disable().formLogin();
+                .and().csrf().disable()
+                .formLogin().loginPage("/loginpage")
+                .usernameParameter("username")
+                .passwordParameter("passwd")
+                .loginProcessingUrl("/login");
     }
 }

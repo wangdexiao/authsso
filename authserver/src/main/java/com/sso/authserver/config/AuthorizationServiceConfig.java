@@ -46,7 +46,7 @@ public class AuthorizationServiceConfig extends AuthorizationServerConfigurerAda
                 .scopes("all")// 允许的授权范围
                 .autoApprove(false)
                 //加上验证回调地址
-                .redirectUris("http://localhost:9002/login");
+                .redirectUris("http://127.0.0.1:9002/login");
     }
 
     @Override
