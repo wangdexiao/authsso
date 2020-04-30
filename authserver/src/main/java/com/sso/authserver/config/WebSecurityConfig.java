@@ -1,6 +1,8 @@
 package com.sso.authserver.config;
 
+import com.sso.authserver.service.MyUserService;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,6 +20,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @MapperScan("com.sso.authserver.mapper")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private MyUserService userService;
+
 
     //将授权服务需要的两个bean，提供给它
     @Bean
@@ -26,11 +31,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManager();
     }
 
-    @Bean
-    @Override
-    protected UserDetailsService userDetailsService() {
-        return super.userDetailsService();
-    }
+//    @Bean
+//    @Override
+//    protected UserDetailsService userDetailsService() {
+//        return super.userDetailsService();
+//    }
 
     @Bean
     PasswordEncoder passwordEncoder(){
@@ -40,10 +45,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("admin").password("$2a$10$cuJ4Br43Ih4GJKtXeI7vXuCqee7N6CbQ26.P2wUoXdT2KJKiKZOay").roles("admin")
-                .and()
-                .withUser("user").password("$2a$10$cuJ4Br43Ih4GJKtXeI7vXuCqee7N6CbQ26.P2wUoXdT2KJKiKZOay").roles("user");
+        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+//        auth.inMemoryAuthentication()
+//                .withUser("admin").password("$2a$10$cuJ4Br43Ih4GJKtXeI7vXuCqee7N6CbQ26.P2wUoXdT2KJKiKZOay").roles("admin")
+//                .and()
+//                .withUser("user").password("$2a$10$cuJ4Br43Ih4GJKtXeI7vXuCqee7N6CbQ26.P2wUoXdT2KJKiKZOay").roles("user");
     }
 
 

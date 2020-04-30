@@ -1,5 +1,6 @@
 package com.sso.authserver.config;
 
+import com.sso.authserver.service.MyUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,10 +32,12 @@ public class AuthorizationServiceConfig extends AuthorizationServerConfigurerAda
 
     //用户详细信息服务 里面存放着用户信息
     @Autowired
-    UserDetailsService userDetailsService;
+    MyUserService userDetailsService;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+
+
         clients.inMemory()// 使用in‐memory存储
                 .withClient("client_id")// client_id
                 .secret(new BCryptPasswordEncoder().encode("123456"))
