@@ -44,7 +44,7 @@ public class AuthorizationServiceConfig extends AuthorizationServerConfigurerAda
                 .accessTokenValiditySeconds(1800)
                 .refreshTokenValiditySeconds(60 * 60 * 2)
                 .scopes("all")// 允许的授权范围
-                .autoApprove(false)
+                .autoApprove(true)//将autoApprove设置为true，这样我们就不会重定向和提升为手动批准任何范围。
                 //加上验证回调地址
                 .redirectUris("http://127.0.0.1:9002/login");
     }

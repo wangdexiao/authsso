@@ -8,7 +8,7 @@ public class HelloController {
 
     @GetMapping("/admin/hello")
     public String admin(){
-        return "hello admin";
+        return "hello admin,我就是你的userinfo";
     }
 
     @GetMapping("/user/hello")
