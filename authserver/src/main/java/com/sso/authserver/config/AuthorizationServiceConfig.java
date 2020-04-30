@@ -1,5 +1,6 @@
 package com.sso.authserver.config;
 
+import com.sso.authserver.service.MyClientDetailsService;
 import com.sso.authserver.service.MyUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,6 +19,8 @@ import org.springframework.security.oauth2.provider.code.AuthorizationCodeServic
 import org.springframework.security.oauth2.provider.code.InMemoryAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
+import javax.annotation.Resource;
+
 @Configuration
 @EnableAuthorizationServer //开启授权服务
 public class AuthorizationServiceConfig extends AuthorizationServerConfigurerAdapter {
@@ -34,22 +37,25 @@ public class AuthorizationServiceConfig extends AuthorizationServerConfigurerAda
     @Autowired
     MyUserService userDetailsService;
 
+    @Resource
+    private MyClientDetailsService myClientDetailsService;
+
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        clients.withClientDetails(myClientDetailsService);
 
-
-        clients.inMemory()// 使用in‐memory存储
-                .withClient("client_id")// client_id
-                .secret(new BCryptPasswordEncoder().encode("123456"))
-                .resourceIds("rid")
-                .authorizedGrantTypes("authorization_code",
-                        "password","client_credentials","implicit","refresh_token")// 该client允许的授权类型
-                .accessTokenValiditySeconds(1800)
-                .refreshTokenValiditySeconds(60 * 60 * 2)
-                .scopes("all")// 允许的授权范围
-                .autoApprove(true)//将autoApprove设置为true，这样我们就不会重定向和提升为手动批准任何范围。
-                //加上验证回调地址
-                .redirectUris("http://127.0.0.1:9002/login");
+//        clients.inMemory()// 使用in‐memory存储
+//                .withClient("client_id")// client_id
+//                .secret(new BCryptPasswordEncoder().encode("123456"))
+//                .resourceIds("rid") //可以访问的resourceid
+//                .authorities("p1,p3")
+//                .authorizedGrantTypes("authorization_code","password","client_credentials","implicit","refresh_token")// 该client允许的授权类型
+//                .accessTokenValiditySeconds(1800)
+//                .refreshTokenValiditySeconds(60 * 60 * 2)
+//                .scopes("all")// 允许的授权范围
+//                .autoApprove(true)//将autoApprove设置为true，这样我们就不会重定向和提升为手动批准任何范围。
+//                //加上验证回调地址
+//                .redirectUris("http://127.0.0.1:9002/login");
     }
 
     @Override
