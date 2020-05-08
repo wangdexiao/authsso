@@ -43,19 +43,6 @@ public class AuthorizationServiceConfig extends AuthorizationServerConfigurerAda
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.withClientDetails(myClientDetailsService);
-
-//        clients.inMemory()// 使用in‐memory存储
-//                .withClient("client_id")// client_id
-//                .secret(new BCryptPasswordEncoder().encode("123456"))
-//                .resourceIds("rid") //可以访问的resourceid
-//                .authorities("p1,p3")
-//                .authorizedGrantTypes("authorization_code","password","client_credentials","implicit","refresh_token")// 该client允许的授权类型
-//                .accessTokenValiditySeconds(1800)
-//                .refreshTokenValiditySeconds(60 * 60 * 2)
-//                .scopes("all")// 允许的授权范围
-//                .autoApprove(true)//将autoApprove设置为true，这样我们就不会重定向和提升为手动批准任何范围。
-//                //加上验证回调地址
-//                .redirectUris("http://127.0.0.1:9002/login");
     }
 
     @Override
@@ -72,7 +59,17 @@ public class AuthorizationServiceConfig extends AuthorizationServerConfigurerAda
         security
                 ///oauth/check_token 端点你需要在授权服务将这个端点暴露出去，以便资源服务可以进行访问，
                 .tokenKeyAccess("permitAll()")// /oauth/token_key 安全配置
-                .checkTokenAccess("permitAll()") // /oauth/check_token 安全配置
+                .checkTokenAccess("isAuthenticated()") // /oauth/check_token 安全配置
                 .allowFormAuthenticationForClients();
     }
+
+
+//    /oauth/authorize ：申请授权码 code, 涉及的类 AuthorizationEndpoint
+//  /oauth/token ：获取令牌 token, 涉及的类 TokenEndpoint
+//  /oauth/check_token ：用于资源服务器请求端点来检查令牌是否有效, 涉及的类 CheckTokenEndpoint
+//  /oauth/confirm_access ：用户确认授权提交, 涉及的类 WhitelabelApprovalEndpoint
+//  /oauth/error ：授权服务错误信息, 涉及的类 WhitelabelErrorEndpoint
+//  /oauth/token_key ：提供公有密匙的端点，使用 JWT 令牌时会使用 , 涉及的类 TokenKeyEndpoint
+
+
 }
