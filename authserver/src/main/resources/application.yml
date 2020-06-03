@@ -1,0 +1,40 @@
+logging:
+    level:
+        web: info
+        root: info
+mybatis:
+    mapper-locations: classpath:mapper/*.xml
+    type-aliases-package: com.sso.authserver.entity
+server:
+    port: 9000
+    servlet:
+        context-path: /authserver
+
+spring:
+    datasource:
+        username: root
+        password: root
+        url: jdbc:mysql://139.9.139.63:3306/security?serverTimezone-GMT%2b8%useUnicode=true&characterEncoding=utf8
+        driver-class-name: com.mysql.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+        #数据源其他配置，在DruidConfig配置类中手动绑定
+        initialSize: 8
+        minIdle: 5
+        maxActive: 20
+        maxWait: 60000
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 1 from dual
+    freemarker:
+        enabled: true
+        suffix: .ftl
+    redis:
+        database: 10
+        host: localhost
+        port: 6379
+#暴漏所有的端点
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"

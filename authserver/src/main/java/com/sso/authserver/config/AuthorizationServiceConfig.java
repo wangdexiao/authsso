@@ -3,23 +3,24 @@ package com.sso.authserver.config;
 import com.sso.authserver.service.MyClientDetailsService;
 import com.sso.authserver.service.MyUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.config.annotation.builders.JdbcClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
-import org.springframework.security.oauth2.provider.code.InMemoryAuthorizationCodeServices;
-import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+import org.springframework.security.oauth2.provider.ClientDetailsService;
+import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
 import javax.annotation.Resource;
+import javax.sql.DataSource;
 
 @Configuration
 @EnableAuthorizationServer //开启授权服务
@@ -40,17 +41,44 @@ public class AuthorizationServiceConfig extends AuthorizationServerConfigurerAda
     @Resource
     private MyClientDetailsService myClientDetailsService;
 
+    @Resource
+    private DataSource dataSource;
+
+    @Resource
+    private JwtAccessTokenConverter jwtAccessTokenConverter;
+
+    @Resource
+    private TokenStore tokenStore;
+
+//    public static void main(String[] args) {
+//        System.out.println(new BCryptPasswordEncoder().encode("admin"));
+//        System.out.println(new BCryptPasswordEncoder().encode("test"));
+//    }
+
+    @Resource
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(myClientDetailsService);
+        JdbcClientDetailsServiceBuilder builder = new JdbcClientDetailsServiceBuilder();
+        ClientDetailsService clientDetailsService =
+                builder.dataSource(dataSource)
+                        .passwordEncoder(passwordEncoder)
+                        .build();
+
+        clients.withClientDetails(clientDetailsService);
+//        clients.withClientDetails(myClientDetailsService);
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.tokenStore(new RedisTokenStore(redisConnectionFactory))
+        endpoints.tokenStore(tokenStore)
+                    .accessTokenConverter(jwtAccessTokenConverter)
                 //身份认证管理
                 .authenticationManager(authenticationManager)
-                .userDetailsService(userDetailsService);
+                .userDetailsService(userDetailsService)
+//                .authorizationCodeServices()
+                ;
     }
 
     @Override

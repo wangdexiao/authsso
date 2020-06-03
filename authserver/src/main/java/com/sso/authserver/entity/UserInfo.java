@@ -13,7 +13,7 @@ public class UserInfo {
 
 
     private String username;
-    private String fullname;
+    private String nickName;
     private String password;
     private String mobile;
     private List<Role> role;

@@ -4,16 +4,16 @@
 
     <resultMap id="userInfo" type="com.sso.authserver.entity.UserInfo">
         <result column="username" property="username" javaType="java.lang.String" />
-        <result column="fullname" property="fullname" javaType="java.lang.String" />
+        <result column="nickName" property="nickName" javaType="java.lang.String" />
         <result column="password" property="password" javaType="java.lang.String" />
         <result column="mobile" property="mobile" javaType="java.lang.String" />
 
         <collection property="role" javaType="java.util.List" ofType="com.sso.authserver.entity.Role">
-            <result column="role_name" property="roleName" javaType="java.lang.String" />
-            <result column="description" property="description" javaType="java.lang.String" />
+            <result column="name" property="name" javaType="java.lang.String" />
+            <result column="remark" property="remark" javaType="java.lang.String" />
             <collection property="permissionList" javaType="java.util.List" ofType="com.sso.authserver.entity.RolePermission">
                 <result column="code" property="code" javaType="java.lang.String" />
-                <result column="description" property="description" javaType="java.lang.String" />
+                <result column="name" property="name" javaType="java.lang.String" />
             </collection>
         </collection>
 
@@ -21,20 +21,21 @@
 
         <collection property="permissions" javaType="java.util.List" ofType="com.sso.authserver.entity.RolePermission">
             <result column="code" property="code" javaType="java.lang.String" />
-            <result column="description" property="description" javaType="java.lang.String" />
+            <result column="name" property="name" javaType="java.lang.String" />
         </collection>
     </resultMap>
 
     <select id="loadUserByUsername" resultMap="userInfo">
-        select user.username,user.password,user.fullname,user.mobile,role.role_name,
-                     role.description ,
-                     per.`code`,per.description
-                 from t_user user
+        select user.username,user.password,user.nick_name,user.mobile,role.name,
+                     role.remark ,
+                     per.`code`,
+                     per.name
+                 from sys_user user
 
-        left join t_user_role on user.id = t_user_role.user_id
-        left join t_role role on role.id = t_user_role.role_id
-        LEFT JOIN t_role_permission role_per on role_per.role_id = role.id
-        left join t_permission per on per.id = role_per.permission_id
+        left join sys_user_role on user.id = sys_user_role.user_id
+        left join sys_role role on role.id = sys_user_role.role_id
+        LEFT JOIN sys_role_permission role_per on role_per.role_id = role.id
+        left join sys_permission per on per.id = role_per.permission_id
 
         where username = #{userName}
 

@@ -10,8 +10,8 @@ import java.util.List;
 @Data
 public class Role {
 
-    private String roleName;
-    private String description;
+    private String name;
+    private String remark;
 
     private List<RolePermission> permissionList;
 }

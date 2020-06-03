@@ -9,5 +9,5 @@ import lombok.Data;
 public class RolePermission {
 
     private String code;
-    private String description;
+    private String name;
 }
