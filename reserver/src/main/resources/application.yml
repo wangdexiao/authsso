@@ -1,0 +1,13 @@
+server:
+    port: 9001
+#security:
+#    oauth2:
+#        client:
+#            client-id: sharecesuo
+#            client-secret: 123456
+#        resource:
+#            id: res
+#            token-info-uri: http://127.0.0.1:9000/authserver/oauth/check_token
+#            jwt:
+#                key-uri: http://127.0.0.1:9000/authserver/oauth/token_key
+#            jwt.
