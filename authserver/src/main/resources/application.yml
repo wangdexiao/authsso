@@ -25,13 +25,12 @@ spring:
         timeBetweenEvictionRunsMillis: 60000
         minEvictableIdleTimeMillis: 300000
         validationQuery: select 1 from dual
-    freemarker:
-        enabled: true
-        suffix: .ftl
     redis:
         database: 10
         host: localhost
         port: 6379
+    thymeleaf:
+        cache: false
 #暴漏所有的端点
 management:
     endpoints:
