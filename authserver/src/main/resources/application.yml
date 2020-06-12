@@ -31,6 +31,13 @@ spring:
         port: 6379
     thymeleaf:
         cache: false
+        prefix: classpath:/templates/
+    mvc:
+        # 应该以什么样的路径来访问静态资源,这表示只有静态资源的访问路径为/static/ 时才会处理(如http://localhost:8080/static/css/base.css)
+        static-path-pattern: /static/**
+    resources:
+    #用于告诉Spring Boot应该在何处查找静态资源文件,查找文件时会依赖于配置的先后顺序依次进行
+        static-locations: classpath:/static/,classpath:/public/,classpath:/resources/,classpath:/META-INF/resources/
 #暴漏所有的端点
 management:
     endpoints:
