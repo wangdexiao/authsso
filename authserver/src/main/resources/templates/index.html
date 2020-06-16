@@ -480,7 +480,7 @@
 
 									<small>欢迎光临,</small>
 
-									Jason
+									<div th:text="${username}"></div>
 
 								</span>
 
@@ -528,7 +528,7 @@
 
 								<li>
 
-									<a href="#">
+									<a th:href="@{/logout}">
 
 										<i class="icon-off"></i>
 
