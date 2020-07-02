@@ -1,3709 +1,2330 @@
 ﻿<!DOCTYPE html>
-
 <html lang="cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	<title>控制台 - Bootstrap后台管理系统模版Ace下载</title>
+	<script th:replace="/common/head::static"></script>
+</head>
 
-	<head>
+<body>
+    <!--头部-->
+    <div th:replace="common/body :: navbar"></div>
 
-		<meta charset="utf-8" />
+    <!--主体-->
+	<div class="main-container" id="main-container">
 
-		<title>控制台 - Bootstrap后台管理系统模版Ace下载</title>
+        <script type="text/javascript">
+            try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+        </script>
 
+        <div class="main-container-inner">
+            <!--左侧菜单栏-->
+            <div th:replace="common/body :: sidebar"></div>
 
-		<script th:replace="/common/head::static"></script>
+            <div class="main-content">
 
-	</head>
+                <!--路径栏-->
+                <div th:replace="common/body :: breadcrumbs"></div>
 
+                <!--页面内容-->
+                <div class="page-content">
 
+                    <div class="page-header">
 
+                        <h1>
 
-	<body>
+                            控制台
 
-		<div class="navbar navbar-default" id="navbar">
+                            <small>
 
-			<script type="text/javascript">
+                                <i class="icon-double-angle-right"></i>
 
-				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+                                 查看
 
-			</script>
+                            </small>
 
+                        </h1>
 
+                    </div><!-- /.page-header -->
 
-			<div class="navbar-container" id="navbar-container">
 
-				<div class="navbar-header pull-left">
 
-					<a href="#" class="navbar-brand">
+                    <div class="row">
 
-						<small>
+                        <div class="col-xs-12">
 
-							<i class="icon-leaf"></i>
+                            <!-- PAGE CONTENT BEGINS -->
 
-							ACE后台管理系统
 
-						</small>
 
-					</a><!-- /.brand -->
+                            <div class="alert alert-block alert-success">
 
-				</div><!-- /.navbar-header -->
+                                <button type="button" class="close" data-dismiss="alert">
 
+                                    <i class="icon-remove"></i>
 
+                                </button>
 
-				<div class="navbar-header pull-right" role="navigation">
 
-					<ul class="nav ace-nav">
 
-						<li class="grey">
+                                <i class="icon-ok green"></i>
 
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
-								<i class="icon-tasks"></i>
 
-								<span class="badge badge-grey">4</span>
+                                欢迎使用
 
-							</a>
+                                <strong class="green">
 
+                                    Ace后台管理系统
 
+                                    <small>(v1.2)</small>
 
-							<ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                                </strong>
 
-								<li class="dropdown-header">
+                                ,轻量级好用的后台管理系统模版.
 
-									<i class="icon-ok"></i>
+                            </div>
 
-									还有4个任务完成
 
-								</li>
 
+                            <div class="row">
 
+                                <div class="space-6"></div>
 
-								<li>
 
-									<a href="#">
 
-										<div class="clearfix">
+                                <div class="col-sm-7 infobox-container">
 
-											<span class="pull-left">软件更新</span>
+                                    <div class="infobox infobox-green  ">
 
-											<span class="pull-right">65%</span>
+                                        <div class="infobox-icon">
 
-										</div>
+                                            <i class="icon-comments"></i>
 
+                                        </div>
 
 
-										<div class="progress progress-mini ">
 
-											<div style="width:65%" class="progress-bar "></div>
+                                        <div class="infobox-data">
 
-										</div>
+                                            <span class="infobox-data-number">32</span>
 
-									</a>
+                                            <div class="infobox-content">2个评论</div>
 
-								</li>
+                                        </div>
 
+                                        <div class="stat stat-success">8%</div>
 
+                                    </div>
 
-								<li>
 
-									<a href="#">
 
-										<div class="clearfix">
+                                    <div class="infobox infobox-blue  ">
 
-											<span class="pull-left">硬件更新</span>
+                                        <div class="infobox-icon">
 
-											<span class="pull-right">35%</span>
+                                            <i class="icon-twitter"></i>
 
-										</div>
+                                        </div>
 
 
 
-										<div class="progress progress-mini ">
+                                        <div class="infobox-data">
 
-											<div style="width:35%" class="progress-bar progress-bar-danger"></div>
+                                            <span class="infobox-data-number">11</span>
 
-										</div>
+                                            <div class="infobox-content">新粉丝</div>
 
-									</a>
+                                        </div>
 
-								</li>
 
 
+                                        <div class="badge badge-success">
 
-								<li>
+                                            +32%
 
-									<a href="#">
+                                            <i class="icon-arrow-up"></i>
 
-										<div class="clearfix">
+                                        </div>
 
-											<span class="pull-left">单元测试</span>
+                                    </div>
 
-											<span class="pull-right">15%</span>
 
-										</div>
 
+                                    <div class="infobox infobox-pink  ">
 
+                                        <div class="infobox-icon">
 
-										<div class="progress progress-mini ">
+                                            <i class="icon-shopping-cart"></i>
 
-											<div style="width:15%" class="progress-bar progress-bar-warning"></div>
+                                        </div>
 
-										</div>
 
-									</a>
 
-								</li>
+                                        <div class="infobox-data">
 
+                                            <span class="infobox-data-number">8</span>
 
+                                            <div class="infobox-content">新订单</div>
 
-								<li>
+                                        </div>
 
-									<a href="#">
+                                        <div class="stat stat-important">4%</div>
 
-										<div class="clearfix">
+                                    </div>
 
-											<span class="pull-left">错误修复</span>
 
-											<span class="pull-right">90%</span>
 
-										</div>
+                                    <div class="infobox infobox-red  ">
 
+                                        <div class="infobox-icon">
 
+                                            <i class="icon-beaker"></i>
 
-										<div class="progress progress-mini progress-striped active">
+                                        </div>
 
-											<div style="width:90%" class="progress-bar progress-bar-success"></div>
 
-										</div>
 
-									</a>
+                                        <div class="infobox-data">
 
-								</li>
+                                            <span class="infobox-data-number">7</span>
 
+                                            <div class="infobox-content">调查</div>
 
+                                        </div>
 
-								<li>
+                                    </div>
 
-									<a href="#">
 
-										查看任务详情
 
-										<i class="icon-arrow-right"></i>
+                                    <div class="infobox infobox-orange2  ">
 
-									</a>
+                                        <div class="infobox-chart">
 
-								</li>
+                                            <span class="sparkline" data-values="196,128,202,177,154,94,100,170,224"></span>
 
-							</ul>
+                                        </div>
 
-						</li>
 
 
+                                        <div class="infobox-data">
 
-						<li class="purple">
+                                            <span class="infobox-data-number">6,251</span>
 
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                            <div class="infobox-content">页面查看次数</div>
 
-								<i class="icon-bell-alt icon-animated-bell"></i>
+                                        </div>
 
-								<span class="badge badge-important">8</span>
 
-							</a>
 
+                                        <div class="badge badge-success">
 
+                                            7.2%
 
-							<ul class="pull-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+                                            <i class="icon-arrow-up"></i>
 
-								<li class="dropdown-header">
+                                        </div>
 
-									<i class="icon-warning-sign"></i>
+                                    </div>
 
-									8条通知
 
-								</li>
 
+                                    <div class="infobox infobox-blue2  ">
 
+                                        <div class="infobox-progress">
 
-								<li>
+                                            <div class="easy-pie-chart percentage" data-percent="42" data-size="46">
 
-									<a href="#">
+                                                <span class="percent">42</span>%
 
-										<div class="clearfix">
+                                            </div>
 
-											<span class="pull-left">
+                                        </div>
 
-												<i class="btn btn-xs no-hover btn-pink icon-comment"></i>
 
-												新闻评论
 
-											</span>
+                                        <div class="infobox-data">
 
-											<span class="pull-right badge badge-info">+12</span>
+                                            <span class="infobox-text">交易使用</span>
 
-										</div>
 
-									</a>
 
-								</li>
+                                            <div class="infobox-content">
 
+                                                <span class="bigger-110">~</span>
 
+                                                剩余58GB
 
-								<li>
+                                            </div>
 
-									<a href="#">
+                                        </div>
 
-										<i class="btn btn-xs btn-primary icon-user"></i>
+                                    </div>
 
-										切换为编辑登录..
 
-									</a>
 
-								</li>
+                                    <div class="space-6"></div>
 
 
 
-								<li>
+                                    <div class="infobox infobox-green infobox-small infobox-dark">
 
-									<a href="#">
+                                        <div class="infobox-progress">
 
-										<div class="clearfix">
+                                            <div class="easy-pie-chart percentage" data-percent="61" data-size="39">
 
-											<span class="pull-left">
+                                                <span class="percent">61</span>%
 
-												<i class="btn btn-xs no-hover btn-success icon-shopping-cart"></i>
+                                            </div>
 
-												新订单
+                                        </div>
 
-											</span>
 
-											<span class="pull-right badge badge-success">+8</span>
 
-										</div>
+                                        <div class="infobox-data">
 
-									</a>
+                                            <div class="infobox-content">任务</div>
 
-								</li>
+                                            <div class="infobox-content">完成</div>
 
+                                        </div>
 
+                                    </div>
 
-								<li>
 
-									<a href="#">
 
-										<div class="clearfix">
+                                    <div class="infobox infobox-blue infobox-small infobox-dark">
 
-											<span class="pull-left">
+                                        <div class="infobox-chart">
 
-												<i class="btn btn-xs no-hover btn-info icon-twitter"></i>
+                                            <span class="sparkline" data-values="3,4,2,3,4,4,2,2"></span>
 
-												粉丝
+                                        </div>
 
-											</span>
 
-											<span class="pull-right badge badge-info">+11</span>
 
-										</div>
+                                        <div class="infobox-data">
 
-									</a>
+                                            <div class="infobox-content">获得</div>
 
-								</li>
+                                            <div class="infobox-content">$32,000</div>
 
+                                        </div>
 
+                                    </div>
 
-								<li>
 
-									<a href="#">
 
-										查看所有通知
+                                    <div class="infobox infobox-grey infobox-small infobox-dark">
 
-										<i class="icon-arrow-right"></i>
+                                        <div class="infobox-icon">
 
-									</a>
+                                            <i class="icon-download-alt"></i>
 
-								</li>
+                                        </div>
 
-							</ul>
 
-						</li>
 
+                                        <div class="infobox-data">
 
+                                            <div class="infobox-content">下载次数</div>
 
-						<li class="green">
+                                            <div class="infobox-content">1,205</div>
 
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        </div>
 
-								<i class="icon-envelope icon-animated-vertical"></i>
+                                    </div>
 
-								<span class="badge badge-success">5</span>
+                                </div>
 
-							</a>
 
 
+                                <div class="vspace-sm"></div>
 
-							<ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
 
-								<li class="dropdown-header">
 
-									<i class="icon-envelope-alt"></i>
+                                <div class="col-sm-5">
 
-									5条消息
+                                    <div class="widget-box">
 
-								</li>
+                                        <div class="widget-header widget-header-flat widget-header-small">
 
+                                            <h5>
 
+                                                <i class="icon-signal"></i>
 
-								<li>
+                                                访问来源
 
-									<a href="#">
+                                            </h5>
 
-										<img th:src="@{/static/assets/avatars/avatar.png}" class="msg-photo" alt="Alex's Avatar" />
 
-										<span class="msg-body">
 
-											<span class="msg-title">
+                                            <div class="widget-toolbar no-border">
 
-												<span class="blue">Alex:</span>
+                                                <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
 
-												不知道写啥 ...
+                                                    本周
 
-											</span>
+                                                    <i class="icon-angle-down icon-on-right bigger-110"></i>
 
+                                                </button>
 
 
-											<span class="msg-time">
 
-												<i class="icon-time"></i>
+                                                <ul class="dropdown-menu pull-right dropdown-125 dropdown-lighter dropdown-caret">
 
-												<span>1分钟以前</span>
+                                                    <li class="active">
 
-											</span>
+                                                        <a href="#" class="blue">
 
-										</span>
+                                                            <i class="icon-caret-right bigger-110">&nbsp;</i>
 
-									</a>
+                                                            本周
 
-								</li>
+                                                        </a>
 
+                                                    </li>
 
 
-								<li>
 
-									<a href="#">
+                                                    <li>
 
-										<img th:src="@{/static/assets/avatars/avatar3.png}" class="msg-photo" alt="Susan's Avatar" />
+                                                        <a href="#">
 
-										<span class="msg-body">
+                                                            <i class="icon-caret-right bigger-110 invisible">&nbsp;</i>
 
-											<span class="msg-title">
+                                                            上周
 
-												<span class="blue">Susan:</span>
+                                                        </a>
 
-												不知道翻译...
+                                                    </li>
 
-											</span>
 
 
+                                                    <li>
 
-											<span class="msg-time">
+                                                        <a href="#">
 
-												<i class="icon-time"></i>
+                                                            <i class="icon-caret-right bigger-110 invisible">&nbsp;</i>
 
-												<span>20分钟以前</span>
+                                                            本月
 
-											</span>
+                                                        </a>
 
-										</span>
+                                                    </li>
 
-									</a>
 
-								</li>
 
+                                                    <li>
 
+                                                        <a href="#">
 
-								<li>
+                                                            <i class="icon-caret-right bigger-110 invisible">&nbsp;</i>
 
-									<a href="#">
+                                                            上月
 
-										<img th:src="@{/static/assets/avatars/avatar4.png}" class="msg-photo" alt="Bob's Avatar" />
+                                                        </a>
 
-										<span class="msg-body">
+                                                    </li>
 
-											<span class="msg-title">
+                                                </ul>
 
-												<span class="blue">Bob:</span>
+                                            </div>
 
-												到底是不是英文 ...
+                                        </div>
 
-											</span>
 
 
+                                        <div class="widget-body">
 
-											<span class="msg-time">
+                                            <div class="widget-main">
 
-												<i class="icon-time"></i>
+                                                <div id="piechart-placeholder"></div>
 
-												<span>下午3:15</span>
 
-											</span>
 
-										</span>
+                                                <div class="hr hr8 hr-double"></div>
 
-									</a>
 
-								</li>
 
+                                                <div class="clearfix">
 
+                                                    <div class="grid3">
 
-								<li>
+                                                        <span class="grey">
 
-									<a href="inbox.html">
+                                                            <i class="icon-facebook-sign icon-2x blue"></i>
 
-										查看所有消息
+                                                            &nbsp; likes
 
-										<i class="icon-arrow-right"></i>
+                                                        </span>
 
-									</a>
+                                                        <h4 class="bigger pull-right">1,255</h4>
 
-								</li>
+                                                    </div>
 
-							</ul>
 
-						</li>
 
+                                                    <div class="grid3">
 
+                                                        <span class="grey">
 
-						<li class="light-blue">
+                                                            <i class="icon-twitter-sign icon-2x purple"></i>
 
-							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                                                            &nbsp; tweets
 
-								<img class="nav-user-photo" th:src="@{/static/assets/avatars/user.jpg}" alt="Jason's Photo" />
+                                                        </span>
 
-								<span class="user-info">
+                                                        <h4 class="bigger pull-right">941</h4>
 
-									<small>欢迎光临,</small>
+                                                    </div>
 
-									<div th:text="${username}"></div>
 
-								</span>
 
+                                                    <div class="grid3">
 
+                                                        <span class="grey">
 
-								<i class="icon-caret-down"></i>
+                                                            <i class="icon-pinterest-sign icon-2x red"></i>
 
-							</a>
+                                                            &nbsp; pins
 
+                                                        </span>
 
+                                                        <h4 class="bigger pull-right">1,050</h4>
 
-							<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                                                    </div>
 
-								<li>
+                                                </div>
 
-									<a href="#">
+                                            </div><!-- /widget-main -->
 
-										<i class="icon-cog"></i>
+                                        </div><!-- /widget-body -->
 
-										设置
+                                    </div><!-- /widget-box -->
 
-									</a>
+                                </div><!-- /span -->
 
-								</li>
+                            </div><!-- /row -->
 
 
 
-								<li>
+                            <div class="hr hr32 hr-dotted"></div>
 
-									<a href="#">
 
-										<i class="icon-user"></i>
 
-										个人资料
+                            <div class="row">
 
-									</a>
+                                <div class="col-sm-5">
 
-								</li>
+                                    <div class="widget-box transparent">
 
+                                        <div class="widget-header widget-header-flat">
 
+                                            <h4 class="lighter">
 
-								<li class="divider"></li>
+                                                <i class="icon-star orange"></i>
 
+                                                热门域名
 
+                                            </h4>
 
-								<li>
 
-									<a th:href="@{/logout}">
 
-										<i class="icon-off"></i>
+                                            <div class="widget-toolbar">
 
-										退出
+                                                <a href="#" data-action="collapse">
 
-									</a>
+                                                    <i class="icon-chevron-up"></i>
 
-								</li>
+                                                </a>
 
-							</ul>
+                                            </div>
 
-						</li>
+                                        </div>
 
-					</ul><!-- /.ace-nav -->
 
-				</div><!-- /.navbar-header -->
 
-			</div><!-- /.container -->
+                                        <div class="widget-body">
 
-		</div>
+                                            <div class="widget-main no-padding">
 
-		<div class="main-container" id="main-container">
+                                                <table class="table table-bordered table-striped">
 
-			<script type="text/javascript">
+                                                    <thead class="thin-border-bottom">
 
-				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+                                                        <tr>
 
-			</script>
+                                                            <th>
 
+                                                                <i class="icon-caret-right blue"></i>
 
+                                                                名称
 
-			<div class="main-container-inner">
+                                                            </th>
 
-				<a class="menu-toggler" id="menu-toggler" href="#">
 
-					<span class="menu-text"></span>
 
-				</a>
+                                                            <th>
 
+                                                                <i class="icon-caret-right blue"></i>
 
+                                                                价格
 
-				<div class="sidebar" id="sidebar">
+                                                            </th>
 
-					<script type="text/javascript">
 
-						try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
 
-					</script>
+                                                            <th class="hidden-480">
 
+                                                                <i class="icon-caret-right blue"></i>
 
+                                                                状态
 
-					<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                                                            </th>
 
-						<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                                                        </tr>
 
-							<button class="btn btn-success">
+                                                    </thead>
 
-								<i class="icon-signal"></i>
 
-							</button>
 
+                                                    <tbody>
 
+                                                        <tr>
 
-							<button class="btn btn-info">
+                                                            <td>internet.com</td>
 
-								<i class="icon-pencil"></i>
 
-							</button>
 
+                                                            <td>
 
+                                                                <small>
 
-							<button class="btn btn-warning">
+                                                                    <s class="red">$29.99</s>
 
-								<i class="icon-group"></i>
+                                                                </small>
 
-							</button>
+                                                                <b class="green">$19.99</b>
 
+                                                            </td>
 
 
-							<button class="btn btn-danger">
 
-								<i class="icon-cogs"></i>
+                                                            <td class="hidden-480">
 
-							</button>
+                                                                <span class="label label-info arrowed-right arrowed-in">销售中</span>
 
-						</div>
+                                                            </td>
 
+                                                        </tr>
 
 
-						<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
 
-							<span class="btn btn-success"></span>
+                                                        <tr>
 
+                                                            <td>online.com</td>
 
 
-							<span class="btn btn-info"></span>
 
+                                                            <td>
 
+                                                                <small>
 
-							<span class="btn btn-warning"></span>
+                                                                    <s class="red"></s>
 
+                                                                </small>
 
+                                                                <b class="green">$16.45</b>
 
-							<span class="btn btn-danger"></span>
+                                                            </td>
 
-						</div>
 
-					</div><!-- #sidebar-shortcuts -->
 
+                                                            <td class="hidden-480">
 
+                                                                <span class="label label-success arrowed-in arrowed-in-right">可用</span>
 
-					<ul class="nav nav-list">
+                                                            </td>
 
-						<li class="active">
+                                                        </tr>
 
-							<a href="index.html">
 
-								<i class="icon-dashboard"></i>
 
-								<span class="menu-text"> 控制台 </span>
+                                                        <tr>
 
-							</a>
+                                                            <td>newnet.com</td>
 
-						</li>
 
 
+                                                            <td>
 
-						<li>
+                                                                <small>
 
-							<a href="typography.html">
+                                                                    <s class="red"></s>
 
-								<i class="icon-text-width"></i>
+                                                                </small>
 
-								<span class="menu-text"> 文字排版 </span>
+                                                                <b class="green">$15.00</b>
 
-							</a>
+                                                            </td>
 
-						</li>
 
 
+                                                            <td class="hidden-480">
 
-						<li>
+                                                                <span class="label label-danger arrowed">待定</span>
 
-							<a href="#" class="dropdown-toggle">
+                                                            </td>
 
-								<i class="icon-desktop"></i>
+                                                        </tr>
 
-								<span class="menu-text"> UI 组件 </span>
 
 
+                                                        <tr>
 
-								<b class="arrow icon-angle-down"></b>
+                                                            <td>web.com</td>
 
-							</a>
 
 
+                                                            <td>
 
-							<ul class="submenu">
+                                                                <small>
 
-								<li>
+                                                                    <s class="red">$24.99</s>
 
-									<a href="elements.html">
+                                                                </small>
 
-										<i class="icon-double-angle-right"></i>
+                                                                <b class="green">$19.95</b>
 
-										组件
+                                                            </td>
 
-									</a>
 
-								</li>
 
+                                                            <td class="hidden-480">
 
+                                                                <span class="label arrowed">
 
-								<li>
+                                                                    <s>无货</s>
 
-									<a href="buttons.html">
+                                                                </span>
 
-										<i class="icon-double-angle-right"></i>
+                                                            </td>
 
-										按钮 &amp; 图表
+                                                        </tr>
 
-									</a>
 
-								</li>
 
+                                                        <tr>
 
+                                                            <td>domain.com</td>
 
-								<li>
 
-									<a href="treeview.html">
 
-										<i class="icon-double-angle-right"></i>
+                                                            <td>
 
-										树菜单
+                                                                <small>
 
-									</a>
+                                                                    <s class="red"></s>
 
-								</li>
+                                                                </small>
 
+                                                                <b class="green">$12.00</b>
 
+                                                            </td>
 
-								<li>
 
-									<a href="jquery-ui.html">
 
-										<i class="icon-double-angle-right"></i>
+                                                            <td class="hidden-480">
 
-										jQuery UI
+                                                                <span class="label label-warning arrowed arrowed-right">售完</span>
 
-									</a>
+                                                            </td>
 
-								</li>
+                                                        </tr>
 
+                                                    </tbody>
 
+                                                </table>
 
-								<li>
+                                            </div><!-- /widget-main -->
 
-									<a href="nestable-list.html">
+                                        </div><!-- /widget-body -->
 
-										<i class="icon-double-angle-right"></i>
+                                    </div><!-- /widget-box -->
 
-										可拖拽列表
+                                </div>
 
-									</a>
 
-								</li>
 
+                                <div class="col-sm-7">
 
+                                    <div class="widget-box transparent">
 
-								<li>
+                                        <div class="widget-header widget-header-flat">
 
-									<a href="#" class="dropdown-toggle">
+                                            <h4 class="lighter">
 
-										<i class="icon-double-angle-right"></i>
+                                                <i class="icon-signal"></i>
 
+                                                销售统计
 
+                                            </h4>
 
-										三级菜单
 
-										<b class="arrow icon-angle-down"></b>
 
-									</a>
+                                            <div class="widget-toolbar">
 
+                                                <a href="#" data-action="collapse">
 
+                                                    <i class="icon-chevron-up"></i>
 
-									<ul class="submenu">
+                                                </a>
 
-										<li>
+                                            </div>
 
-											<a href="#">
+                                        </div>
 
-												<i class="icon-leaf"></i>
 
-												第一级
 
-											</a>
+                                        <div class="widget-body">
 
-										</li>
+                                            <div class="widget-main padding-4">
 
+                                                <div id="sales-charts"></div>
 
+                                            </div><!-- /widget-main -->
 
-										<li>
+                                        </div><!-- /widget-body -->
 
-											<a href="#" class="dropdown-toggle">
+                                    </div><!-- /widget-box -->
 
-												<i class="icon-pencil"></i>
+                                </div>
 
+                            </div>
 
 
-												第四级
 
-												<b class="arrow icon-angle-down"></b>
+                            <div class="hr hr32 hr-dotted"></div>
 
-											</a>
 
 
+                            <div class="row">
 
-											<ul class="submenu">
+                                <div class="col-sm-6">
 
-												<li>
+                                    <div class="widget-box transparent" id="recent-box">
 
-													<a href="#">
+                                        <div class="widget-header">
 
-														<i class="icon-plus"></i>
+                                            <h4 class="lighter smaller">
 
-														添加产品
+                                                <i class="icon-rss orange"></i>
 
-													</a>
+                                                最近
 
-												</li>
+                                            </h4>
 
 
 
-												<li>
+                                            <div class="widget-toolbar no-border">
 
-													<a href="#">
+                                                <ul class="nav nav-tabs" id="recent-tab">
 
-														<i class="icon-eye-open"></i>
+                                                    <li class="active">
 
-														查看商品
+                                                        <a data-toggle="tab" href="#task-tab">任务</a>
 
-													</a>
+                                                    </li>
 
-												</li>
 
-											</ul>
 
-										</li>
+                                                    <li>
 
-									</ul>
+                                                        <a data-toggle="tab" href="#member-tab">会员</a>
 
-								</li>
+                                                    </li>
 
-							</ul>
 
-						</li>
 
+                                                    <li>
 
+                                                        <a data-toggle="tab" href="#comment-tab">评论</a>
 
-						<li>
+                                                    </li>
 
-							<a href="#" class="dropdown-toggle">
+                                                </ul>
 
-								<i class="icon-list"></i>
+                                            </div>
 
-								<span class="menu-text"> 表格 </span>
+                                        </div>
 
 
 
-								<b class="arrow icon-angle-down"></b>
+                                        <div class="widget-body">
 
-							</a>
+                                            <div class="widget-main padding-4">
 
+                                                <div class="tab-content padding-8 overflow-visible">
 
+                                                    <div id="task-tab" class="tab-pane active">
 
-							<ul class="submenu">
+                                                        <h4 class="smaller lighter green">
 
-								<li>
+                                                            <i class="icon-list"></i>
 
-									<a href="tables.html">
+                                                            可拖拽排序列表
 
-										<i class="icon-double-angle-right"></i>
+                                                        </h4>
 
-										简单 &amp; 动态
 
-									</a>
 
-								</li>
+                                                        <ul id="tasks" class="item-list">
 
+                                                            <li class="item-orange clearfix">
 
+                                                                <label class="inline">
 
-								<li>
+                                                                    <input type="checkbox" class="ace" />
 
-									<a href="jqgrid.html">
+                                                                    <span class="lbl"> 问答</span>
 
-										<i class="icon-double-angle-right"></i>
+                                                                </label>
 
-										jqGrid plugin
 
-									</a>
 
-								</li>
+                                                                <div class="pull-right easy-pie-chart percentage" data-size="30" data-color="#ECCB71" data-percent="42">
 
-							</ul>
+                                                                    <span class="percent">42</span>%
 
-						</li>
+                                                                </div>
 
+                                                            </li>
 
 
-						<li>
 
-							<a href="#" class="dropdown-toggle">
+                                                            <li class="item-red clearfix">
 
-								<i class="icon-edit"></i>
+                                                                <label class="inline">
 
-								<span class="menu-text"> 表单 </span>
+                                                                    <input type="checkbox" class="ace" />
 
+                                                                    <span class="lbl"> BUG修复</span>
 
+                                                                </label>
 
-								<b class="arrow icon-angle-down"></b>
 
-							</a>
 
+                                                                <div class="pull-right action-buttons">
 
+                                                                    <a href="#" class="blue">
 
-							<ul class="submenu">
+                                                                        <i class="icon-pencil bigger-130"></i>
 
-								<li>
+                                                                    </a>
 
-									<a href="form-elements.html">
 
-										<i class="icon-double-angle-right"></i>
 
-										表单组件
+                                                                    <span class="vbar"></span>
 
-									</a>
 
-								</li>
 
+                                                                    <a href="#" class="red">
 
+                                                                        <i class="icon-trash bigger-130"></i>
 
-								<li>
+                                                                    </a>
 
-									<a href="form-wizard.html">
 
-										<i class="icon-double-angle-right"></i>
 
-										向导提示 &amp; 验证
+                                                                    <span class="vbar"></span>
 
-									</a>
 
-								</li>
 
+                                                                    <a href="#" class="green">
 
+                                                                        <i class="icon-flag bigger-130"></i>
 
-								<li>
+                                                                    </a>
 
-									<a href="wysiwyg.html">
+                                                                </div>
 
-										<i class="icon-double-angle-right"></i>
+                                                            </li>
 
-										编辑器
 
-									</a>
 
-								</li>
+                                                            <li class="item-default clearfix">
 
+                                                                <label class="inline">
 
+                                                                    <input type="checkbox" class="ace" />
 
-								<li>
+                                                                    <span class="lbl">添加新的特征</span>
 
-									<a href="dropzone.html">
+                                                                </label>
 
-										<i class="icon-double-angle-right"></i>
 
-										文件上传
 
-									</a>
+                                                                <div class="inline pull-right position-relative dropdown-hover">
 
-								</li>
+                                                                    <button class="btn btn-minier bigger btn-primary">
 
-							</ul>
+                                                                        <i class="icon-cog icon-only bigger-120"></i>
 
-						</li>
+                                                                    </button>
 
 
 
-						<li>
+                                                                    <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-caret dropdown-close pull-right">
 
-							<a href="widgets.html">
+                                                                        <li>
 
-								<i class="icon-list-alt"></i>
+                                                                            <a href="#" class="tooltip-success" data-rel="tooltip" title="Mark&nbsp;as&nbsp;done">
 
-								<span class="menu-text"> 插件 </span>
+                                                                                <span class="green">
 
-							</a>
+                                                                                    <i class="icon-ok bigger-110"></i>
 
-						</li>
+                                                                                </span>
 
+                                                                            </a>
 
+                                                                        </li>
 
-						<li>
 
-							<a href="calendar.html">
 
-								<i class="icon-calendar"></i>
+                                                                        <li>
 
+                                                                            <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
 
+                                                                                <span class="red">
 
-								<span class="menu-text">
+                                                                                    <i class="icon-trash bigger-110"></i>
 
-									日历
+                                                                                </span>
 
-									<span class="badge badge-transparent tooltip-error" title="2&nbsp;Important&nbsp;Events">
+                                                                            </a>
 
-										<i class="icon-warning-sign red bigger-130"></i>
+                                                                        </li>
 
-									</span>
+                                                                    </ul>
 
-								</span>
+                                                                </div>
 
-							</a>
+                                                            </li>
 
-						</li>
 
 
+                                                            <li class="item-blue clearfix">
 
-						<li>
+                                                                <label class="inline">
 
-							<a href="gallery.html">
+                                                                    <input type="checkbox" class="ace" />
 
-								<i class="icon-picture"></i>
+                                                                    <span class="lbl"> 更新模版脚本</span>
 
-								<span class="menu-text"> 相册 </span>
+                                                                </label>
 
-							</a>
+                                                            </li>
 
-						</li>
 
 
+                                                            <li class="item-grey clearfix">
 
-						<li>
+                                                                <label class="inline">
 
-							<a href="#" class="dropdown-toggle">
+                                                                    <input type="checkbox" class="ace" />
 
-								<i class="icon-tag"></i>
+                                                                    <span class="lbl"> 添加新皮肤</span>
 
-								<span class="menu-text"> 更多页面 </span>
+                                                                </label>
 
+                                                            </li>
 
 
-								<b class="arrow icon-angle-down"></b>
 
-							</a>
+                                                            <li class="item-green clearfix">
 
+                                                                <label class="inline">
 
+                                                                    <input type="checkbox" class="ace" />
 
-							<ul class="submenu">
+                                                                    <span class="lbl"> 升级服务端</span>
 
-								<li>
+                                                                </label>
 
-									<a href="profile.html">
+                                                            </li>
 
-										<i class="icon-double-angle-right"></i>
 
-										用户信息
 
-									</a>
+                                                            <li class="item-pink clearfix">
 
-								</li>
+                                                                <label class="inline">
 
+                                                                    <input type="checkbox" class="ace" />
 
+                                                                    <span class="lbl"> 清理垃圾</span>
 
-								<li>
+                                                                </label>
 
-									<a href="inbox.html">
+                                                            </li>
 
-										<i class="icon-double-angle-right"></i>
+                                                        </ul>
 
-										收件箱
+                                                    </div>
 
-									</a>
 
-								</li>
 
+                                                    <div id="member-tab" class="tab-pane">
 
+                                                        <div class="clearfix">
 
-								<li>
+                                                            <div class="itemdiv memberdiv">
 
-									<a href="pricing.html">
+                                                                <div class="user">
 
-										<i class="icon-double-angle-right"></i>
+                                                                    <img alt="Bob Doe's avatar" th:src="@{/static/assets/avatars/user.jpg}" />
 
-										售价单
+                                                                </div>
 
-									</a>
 
-								</li>
 
+                                                                <div class="body">
 
+                                                                    <div class="name">
 
-								<li>
+                                                                        <a href="#">Bob Doe</a>
 
-									<a href="invoice.html">
+                                                                    </div>
 
-										<i class="icon-double-angle-right"></i>
 
-										购物车
 
-									</a>
+                                                                    <div class="time">
 
-								</li>
+                                                                        <i class="icon-time"></i>
 
+                                                                        <span class="green">20 min</span>
 
+                                                                    </div>
 
-								<li>
 
-									<a href="timeline.html">
 
-										<i class="icon-double-angle-right"></i>
+                                                                    <div>
 
-										时间轴
+                                                                        <span class="label label-warning label-sm">pending</span>
 
-									</a>
 
-								</li>
 
+                                                                        <div class="inline position-relative">
 
+                                                                            <button class="btn btn-minier bigger btn-yellow btn-no-border dropdown-toggle" data-toggle="dropdown">
 
-								<li>
+                                                                                <i class="icon-angle-down icon-only bigger-120"></i>
 
-									<a href="login.html">
+                                                                            </button>
 
-										<i class="icon-double-angle-right"></i>
 
-										登录 &amp; 注册
 
-									</a>
+                                                                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
 
-								</li>
+                                                                                <li>
 
-							</ul>
+                                                                                    <a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">
 
-						</li>
+                                                                                        <span class="green">
 
+                                                                                            <i class="icon-ok bigger-110"></i>
 
+                                                                                        </span>
 
-						<li>
+                                                                                    </a>
 
-							<a href="#" class="dropdown-toggle">
+                                                                                </li>
 
-								<i class="icon-file-alt"></i>
 
 
+                                                                                <li>
 
-								<span class="menu-text">
+                                                                                    <a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">
 
-									其他页面
+                                                                                        <span class="orange">
 
-									<span class="badge badge-primary ">5</span>
+                                                                                            <i class="icon-remove bigger-110"></i>
 
-								</span>
+                                                                                        </span>
 
+                                                                                    </a>
 
+                                                                                </li>
 
-								<b class="arrow icon-angle-down"></b>
 
-							</a>
 
+                                                                                <li>
 
+                                                                                    <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
 
-							<ul class="submenu">
+                                                                                        <span class="red">
 
-								<li>
+                                                                                            <i class="icon-trash bigger-110"></i>
 
-									<a href="faq.html">
+                                                                                        </span>
 
-										<i class="icon-double-angle-right"></i>
+                                                                                    </a>
 
-										帮助
+                                                                                </li>
 
-									</a>
+                                                                            </ul>
 
-								</li>
+                                                                        </div>
 
+                                                                    </div>
 
+                                                                </div>
 
-								<li>
+                                                            </div>
 
-									<a href="error-404.html">
 
-										<i class="icon-double-angle-right"></i>
 
-										404错误页面
+                                                            <div class="itemdiv memberdiv">
 
-									</a>
+                                                                <div class="user">
 
-								</li>
+                                                                    <img alt="Joe Doe's avatar" th:src="@{/static/assets/avatars/avatar2.png}" />
 
+                                                                </div>
 
 
-								<li>
 
-									<a href="error-500.html">
+                                                                <div class="body">
 
-										<i class="icon-double-angle-right"></i>
+                                                                    <div class="name">
 
-										500错误页面
+                                                                        <a href="#">Joe Doe</a>
 
-									</a>
+                                                                    </div>
 
-								</li>
 
 
+                                                                    <div class="time">
 
-								<li>
+                                                                        <i class="icon-time"></i>
 
-									<a href="grid.html">
+                                                                        <span class="green">1 hour</span>
 
-										<i class="icon-double-angle-right"></i>
+                                                                    </div>
 
-										网格
 
-									</a>
 
-								</li>
+                                                                    <div>
 
+                                                                        <span class="label label-warning label-sm">pending</span>
 
 
-								<li>
 
-									<a href="blank.html">
+                                                                        <div class="inline position-relative">
 
-										<i class="icon-double-angle-right"></i>
+                                                                            <button class="btn btn-minier bigger btn-yellow btn-no-border dropdown-toggle" data-toggle="dropdown">
 
-										空白页面
+                                                                                <i class="icon-angle-down icon-only bigger-120"></i>
 
-									</a>
+                                                                            </button>
 
-								</li>
 
-							</ul>
 
-						</li>
+                                                                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
 
-					</ul><!-- /.nav-list -->
+                                                                                <li>
 
+                                                                                    <a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">
 
+                                                                                        <span class="green">
 
-					<div class="sidebar-collapse" id="sidebar-collapse">
+                                                                                            <i class="icon-ok bigger-110"></i>
 
-						<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+                                                                                        </span>
 
-					</div>
+                                                                                    </a>
 
+                                                                                </li>
 
 
-					<script type="text/javascript">
 
-						try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+                                                                                <li>
 
-					</script>
+                                                                                    <a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">
 
-				</div>
+                                                                                        <span class="orange">
 
+                                                                                            <i class="icon-remove bigger-110"></i>
 
+                                                                                        </span>
 
-				<div class="main-content">
+                                                                                    </a>
 
-					<div class="breadcrumbs" id="breadcrumbs">
+                                                                                </li>
 
-						<script type="text/javascript">
 
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
 
-						</script>
+                                                                                <li>
 
+                                                                                    <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
 
+                                                                                        <span class="red">
 
-						<ul class="breadcrumb">
+                                                                                            <i class="icon-trash bigger-110"></i>
 
-							<li>
+                                                                                        </span>
 
-								<i class="icon-home home-icon"></i>
+                                                                                    </a>
 
-								<a href="#">首页</a>
+                                                                                </li>
 
-							</li>
+                                                                            </ul>
 
-							<li class="active">控制台</li>
+                                                                        </div>
 
-						</ul><!-- .breadcrumb -->
+                                                                    </div>
 
+                                                                </div>
 
+                                                            </div>
 
-						<div class="nav-search" id="nav-search">
 
-							<form class="form-search">
 
-								<span class="input-icon">
+                                                            <div class="itemdiv memberdiv">
 
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                                                                <div class="user">
 
-									<i class="icon-search nav-search-icon"></i>
+                                                                    <img alt="Jim Doe's avatar" th:src="@{/static/assets/avatars/avatar.png}" />
 
-								</span>
+                                                                </div>
 
-							</form>
 
-						</div><!-- #nav-search -->
 
-					</div>
+                                                                <div class="body">
 
+                                                                    <div class="name">
 
+                                                                        <a href="#">Jim Doe</a>
 
-					<div class="page-content">
+                                                                    </div>
 
-						<div class="page-header">
 
-							<h1>
 
-								控制台
+                                                                    <div class="time">
 
-								<small>
+                                                                        <i class="icon-time"></i>
 
-									<i class="icon-double-angle-right"></i>
+                                                                        <span class="green">2 hour</span>
 
-									 查看
+                                                                    </div>
 
-								</small>
 
-							</h1>
 
-						</div><!-- /.page-header -->
+                                                                    <div>
 
+                                                                        <span class="label label-warning label-sm">pending</span>
 
 
-						<div class="row">
 
-							<div class="col-xs-12">
+                                                                        <div class="inline position-relative">
 
-								<!-- PAGE CONTENT BEGINS -->
+                                                                            <button class="btn btn-minier bigger btn-yellow btn-no-border dropdown-toggle" data-toggle="dropdown">
 
+                                                                                <i class="icon-angle-down icon-only bigger-120"></i>
 
+                                                                            </button>
 
-								<div class="alert alert-block alert-success">
 
-									<button type="button" class="close" data-dismiss="alert">
 
-										<i class="icon-remove"></i>
+                                                                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
 
-									</button>
+                                                                                <li>
 
+                                                                                    <a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">
 
+                                                                                        <span class="green">
 
-									<i class="icon-ok green"></i>
+                                                                                            <i class="icon-ok bigger-110"></i>
 
+                                                                                        </span>
 
+                                                                                    </a>
 
-									欢迎使用
+                                                                                </li>
 
-									<strong class="green">
 
-										Ace后台管理系统
 
-										<small>(v1.2)</small>
+                                                                                <li>
 
-									</strong>
+                                                                                    <a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">
 
-									,轻量级好用的后台管理系统模版.
+                                                                                        <span class="orange">
 
-								</div>
+                                                                                            <i class="icon-remove bigger-110"></i>
 
+                                                                                        </span>
 
+                                                                                    </a>
 
-								<div class="row">
+                                                                                </li>
 
-									<div class="space-6"></div>
 
 
+                                                                                <li>
 
-									<div class="col-sm-7 infobox-container">
+                                                                                    <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
 
-										<div class="infobox infobox-green  ">
+                                                                                        <span class="red">
 
-											<div class="infobox-icon">
+                                                                                            <i class="icon-trash bigger-110"></i>
 
-												<i class="icon-comments"></i>
+                                                                                        </span>
 
-											</div>
+                                                                                    </a>
 
+                                                                                </li>
 
+                                                                            </ul>
 
-											<div class="infobox-data">
+                                                                        </div>
 
-												<span class="infobox-data-number">32</span>
+                                                                    </div>
 
-												<div class="infobox-content">2个评论</div>
+                                                                </div>
 
-											</div>
+                                                            </div>
 
-											<div class="stat stat-success">8%</div>
 
-										</div>
 
+                                                            <div class="itemdiv memberdiv">
 
+                                                                <div class="user">
 
-										<div class="infobox infobox-blue  ">
+                                                                    <img alt="Alex Doe's avatar" th:src="@{/static/assets/avatars/avatar5.png}" />
 
-											<div class="infobox-icon">
+                                                                </div>
 
-												<i class="icon-twitter"></i>
 
-											</div>
 
+                                                                <div class="body">
 
+                                                                    <div class="name">
 
-											<div class="infobox-data">
+                                                                        <a href="#">Alex Doe</a>
 
-												<span class="infobox-data-number">11</span>
+                                                                    </div>
 
-												<div class="infobox-content">新粉丝</div>
 
-											</div>
 
+                                                                    <div class="time">
 
+                                                                        <i class="icon-time"></i>
 
-											<div class="badge badge-success">
+                                                                        <span class="green">3 hour</span>
 
-												+32%
+                                                                    </div>
 
-												<i class="icon-arrow-up"></i>
 
-											</div>
 
-										</div>
+                                                                    <div>
 
+                                                                        <span class="label label-danger label-sm">blocked</span>
 
+                                                                    </div>
 
-										<div class="infobox infobox-pink  ">
+                                                                </div>
 
-											<div class="infobox-icon">
+                                                            </div>
 
-												<i class="icon-shopping-cart"></i>
 
-											</div>
 
+                                                            <div class="itemdiv memberdiv">
 
+                                                                <div class="user">
 
-											<div class="infobox-data">
+                                                                    <img alt="Bob Doe's avatar" th:src="@{/static/assets/avatars/avatar2.png}" />
 
-												<span class="infobox-data-number">8</span>
+                                                                </div>
 
-												<div class="infobox-content">新订单</div>
 
-											</div>
 
-											<div class="stat stat-important">4%</div>
+                                                                <div class="body">
 
-										</div>
+                                                                    <div class="name">
 
+                                                                        <a href="#">Bob Doe</a>
 
+                                                                    </div>
 
-										<div class="infobox infobox-red  ">
 
-											<div class="infobox-icon">
 
-												<i class="icon-beaker"></i>
+                                                                    <div class="time">
 
-											</div>
+                                                                        <i class="icon-time"></i>
 
+                                                                        <span class="green">6 hour</span>
 
+                                                                    </div>
 
-											<div class="infobox-data">
 
-												<span class="infobox-data-number">7</span>
 
-												<div class="infobox-content">调查</div>
+                                                                    <div>
 
-											</div>
+                                                                        <span class="label label-success label-sm arrowed-in">approved</span>
 
-										</div>
+                                                                    </div>
 
+                                                                </div>
 
+                                                            </div>
 
-										<div class="infobox infobox-orange2  ">
 
-											<div class="infobox-chart">
 
-												<span class="sparkline" data-values="196,128,202,177,154,94,100,170,224"></span>
+                                                            <div class="itemdiv memberdiv">
 
-											</div>
+                                                                <div class="user">
 
+                                                                    <img alt="Susan's avatar" th:src="@{/static/assets/avatars/avatar3.png}" />
 
+                                                                </div>
 
-											<div class="infobox-data">
 
-												<span class="infobox-data-number">6,251</span>
 
-												<div class="infobox-content">页面查看次数</div>
+                                                                <div class="body">
 
-											</div>
+                                                                    <div class="name">
 
+                                                                        <a href="#">Susan</a>
 
+                                                                    </div>
 
-											<div class="badge badge-success">
 
-												7.2%
 
-												<i class="icon-arrow-up"></i>
+                                                                    <div class="time">
 
-											</div>
+                                                                        <i class="icon-time"></i>
 
-										</div>
+                                                                        <span class="green">yesterday</span>
 
+                                                                    </div>
 
 
-										<div class="infobox infobox-blue2  ">
 
-											<div class="infobox-progress">
+                                                                    <div>
 
-												<div class="easy-pie-chart percentage" data-percent="42" data-size="46">
+                                                                        <span class="label label-success label-sm arrowed-in">approved</span>
 
-													<span class="percent">42</span>%
+                                                                    </div>
 
-												</div>
+                                                                </div>
 
-											</div>
+                                                            </div>
 
 
 
-											<div class="infobox-data">
+                                                            <div class="itemdiv memberdiv">
 
-												<span class="infobox-text">交易使用</span>
+                                                                <div class="user">
 
+                                                                    <img alt="Phil Doe's avatar" th:src="@{/static/assets/avatars/avatar4.png}" />
 
+                                                                </div>
 
-												<div class="infobox-content">
 
-													<span class="bigger-110">~</span>
 
-													剩余58GB
+                                                                <div class="body">
 
-												</div>
+                                                                    <div class="name">
 
-											</div>
+                                                                        <a href="#">Phil Doe</a>
 
-										</div>
+                                                                    </div>
 
 
 
-										<div class="space-6"></div>
+                                                                    <div class="time">
 
+                                                                        <i class="icon-time"></i>
 
+                                                                        <span class="green">2 days ago</span>
 
-										<div class="infobox infobox-green infobox-small infobox-dark">
+                                                                    </div>
 
-											<div class="infobox-progress">
 
-												<div class="easy-pie-chart percentage" data-percent="61" data-size="39">
 
-													<span class="percent">61</span>%
+                                                                    <div>
 
-												</div>
+                                                                        <span class="label label-info label-sm arrowed-in arrowed-in-right">online</span>
 
-											</div>
+                                                                    </div>
 
+                                                                </div>
 
+                                                            </div>
 
-											<div class="infobox-data">
 
-												<div class="infobox-content">任务</div>
 
-												<div class="infobox-content">完成</div>
+                                                            <div class="itemdiv memberdiv">
 
-											</div>
+                                                                <div class="user">
 
-										</div>
+                                                                    <img alt="Alexa Doe's avatar" th:src="@{/static/assets/avatars/avatar1.png}" />
 
+                                                                </div>
 
 
-										<div class="infobox infobox-blue infobox-small infobox-dark">
 
-											<div class="infobox-chart">
+                                                                <div class="body">
 
-												<span class="sparkline" data-values="3,4,2,3,4,4,2,2"></span>
+                                                                    <div class="name">
 
-											</div>
+                                                                        <a href="#">Alexa Doe</a>
 
+                                                                    </div>
 
 
-											<div class="infobox-data">
 
-												<div class="infobox-content">获得</div>
+                                                                    <div class="time">
 
-												<div class="infobox-content">$32,000</div>
+                                                                        <i class="icon-time"></i>
 
-											</div>
+                                                                        <span class="green">3天以前</span>
 
-										</div>
+                                                                    </div>
 
 
 
-										<div class="infobox infobox-grey infobox-small infobox-dark">
+                                                                    <div>
 
-											<div class="infobox-icon">
+                                                                        <span class="label label-success label-sm arrowed-in">approved</span>
 
-												<i class="icon-download-alt"></i>
+                                                                    </div>
 
-											</div>
+                                                                </div>
 
+                                                            </div>
 
+                                                        </div>
 
-											<div class="infobox-data">
 
-												<div class="infobox-content">下载次数</div>
 
-												<div class="infobox-content">1,205</div>
+                                                        <div class="center">
 
-											</div>
+                                                            <i class="icon-group icon-2x green"></i>
 
-										</div>
 
-									</div>
 
+                                                            &nbsp;
 
+                                                            <a href="#">
 
-									<div class="vspace-sm"></div>
+                                                                查看所有会员 &nbsp;
 
+                                                                <i class="icon-arrow-right"></i>
 
+                                                            </a>
 
-									<div class="col-sm-5">
+                                                        </div>
 
-										<div class="widget-box">
 
-											<div class="widget-header widget-header-flat widget-header-small">
 
-												<h5>
+                                                        <div class="hr hr-double hr8"></div>
 
-													<i class="icon-signal"></i>
+                                                    </div><!-- member-tab -->
 
-													访问来源
 
-												</h5>
 
+                                                    <div id="comment-tab" class="tab-pane">
 
+                                                        <div class="comments">
 
-												<div class="widget-toolbar no-border">
+                                                            <div class="itemdiv commentdiv">
 
-													<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                                <div class="user">
 
-														本周
+                                                                    <img alt="Bob Doe's Avatar" th:src="@{/static/assets/avatars/avatar.png}" />
 
-														<i class="icon-angle-down icon-on-right bigger-110"></i>
+                                                                </div>
 
-													</button>
 
 
+                                                                <div class="body">
 
-													<ul class="dropdown-menu pull-right dropdown-125 dropdown-lighter dropdown-caret">
+                                                                    <div class="name">
 
-														<li class="active">
+                                                                        <a href="#">Bob Doe</a>
 
-															<a href="#" class="blue">
+                                                                    </div>
 
-																<i class="icon-caret-right bigger-110">&nbsp;</i>
 
-																本周
 
-															</a>
+                                                                    <div class="time">
 
-														</li>
+                                                                        <i class="icon-time"></i>
 
+                                                                        <span class="green">6 min</span>
 
+                                                                    </div>
 
-														<li>
 
-															<a href="#">
 
-																<i class="icon-caret-right bigger-110 invisible">&nbsp;</i>
+                                                                    <div class="text">
 
-																上周
+                                                                        <i class="icon-quote-left"></i>
 
-															</a>
+                                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;
 
-														</li>
+                                                                    </div>
 
+                                                                </div>
 
 
-														<li>
 
-															<a href="#">
+                                                                <div class="tools">
 
-																<i class="icon-caret-right bigger-110 invisible">&nbsp;</i>
+                                                                    <div class="inline position-relative">
 
-																本月
+                                                                        <button class="btn btn-minier bigger btn-yellow dropdown-toggle" data-toggle="dropdown">
 
-															</a>
+                                                                            <i class="icon-angle-down icon-only bigger-120"></i>
 
-														</li>
+                                                                        </button>
 
 
 
-														<li>
+                                                                        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
 
-															<a href="#">
+                                                                            <li>
 
-																<i class="icon-caret-right bigger-110 invisible">&nbsp;</i>
+                                                                                <a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">
 
-																上月
+                                                                                    <span class="green">
 
-															</a>
+                                                                                        <i class="icon-ok bigger-110"></i>
 
-														</li>
+                                                                                    </span>
 
-													</ul>
+                                                                                </a>
 
-												</div>
+                                                                            </li>
 
-											</div>
 
 
+                                                                            <li>
 
-											<div class="widget-body">
+                                                                                <a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">
 
-												<div class="widget-main">
+                                                                                    <span class="orange">
 
-													<div id="piechart-placeholder"></div>
+                                                                                        <i class="icon-remove bigger-110"></i>
 
+                                                                                    </span>
 
+                                                                                </a>
 
-													<div class="hr hr8 hr-double"></div>
+                                                                            </li>
 
 
 
-													<div class="clearfix">
+                                                                            <li>
 
-														<div class="grid3">
+                                                                                <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
 
-															<span class="grey">
+                                                                                    <span class="red">
 
-																<i class="icon-facebook-sign icon-2x blue"></i>
+                                                                                        <i class="icon-trash bigger-110"></i>
 
-																&nbsp; likes
+                                                                                    </span>
 
-															</span>
+                                                                                </a>
 
-															<h4 class="bigger pull-right">1,255</h4>
+                                                                            </li>
 
-														</div>
+                                                                        </ul>
 
+                                                                    </div>
 
+                                                                </div>
 
-														<div class="grid3">
+                                                            </div>
 
-															<span class="grey">
 
-																<i class="icon-twitter-sign icon-2x purple"></i>
 
-																&nbsp; tweets
+                                                            <div class="itemdiv commentdiv">
 
-															</span>
+                                                                <div class="user">
 
-															<h4 class="bigger pull-right">941</h4>
+                                                                    <img alt="Jennifer's Avatar" th:src="@{/static/assets/avatars/avatar1.png}" />
 
-														</div>
+                                                                </div>
 
 
 
-														<div class="grid3">
+                                                                <div class="body">
 
-															<span class="grey">
+                                                                    <div class="name">
 
-																<i class="icon-pinterest-sign icon-2x red"></i>
+                                                                        <a href="#">Jennifer</a>
 
-																&nbsp; pins
+                                                                    </div>
 
-															</span>
 
-															<h4 class="bigger pull-right">1,050</h4>
 
-														</div>
+                                                                    <div class="time">
 
-													</div>
+                                                                        <i class="icon-time"></i>
 
-												</div><!-- /widget-main -->
+                                                                        <span class="blue">15 min</span>
 
-											</div><!-- /widget-body -->
+                                                                    </div>
 
-										</div><!-- /widget-box -->
 
-									</div><!-- /span -->
 
-								</div><!-- /row -->
+                                                                    <div class="text">
 
+                                                                        <i class="icon-quote-left"></i>
 
+                                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;
 
-								<div class="hr hr32 hr-dotted"></div>
+                                                                    </div>
 
+                                                                </div>
 
 
-								<div class="row">
 
-									<div class="col-sm-5">
+                                                                <div class="tools">
 
-										<div class="widget-box transparent">
+                                                                    <div class="action-buttons bigger-125">
 
-											<div class="widget-header widget-header-flat">
+                                                                        <a href="#">
 
-												<h4 class="lighter">
+                                                                            <i class="icon-pencil blue"></i>
 
-													<i class="icon-star orange"></i>
+                                                                        </a>
 
-													热门域名
 
-												</h4>
 
+                                                                        <a href="#">
 
+                                                                            <i class="icon-trash red"></i>
 
-												<div class="widget-toolbar">
+                                                                        </a>
 
-													<a href="#" data-action="collapse">
+                                                                    </div>
 
-														<i class="icon-chevron-up"></i>
+                                                                </div>
 
-													</a>
+                                                            </div>
 
-												</div>
 
-											</div>
 
+                                                            <div class="itemdiv commentdiv">
 
+                                                                <div class="user">
 
-											<div class="widget-body">
+                                                                    <img alt="Joe's Avatar" th:src="@{/static/assets/avatars/avatar2.png}" />
 
-												<div class="widget-main no-padding">
+                                                                </div>
 
-													<table class="table table-bordered table-striped">
 
-														<thead class="thin-border-bottom">
 
-															<tr>
+                                                                <div class="body">
 
-																<th>
+                                                                    <div class="name">
 
-																	<i class="icon-caret-right blue"></i>
+                                                                        <a href="#">Joe</a>
 
-																	名称
+                                                                    </div>
 
-																</th>
 
 
+                                                                    <div class="time">
 
-																<th>
+                                                                        <i class="icon-time"></i>
 
-																	<i class="icon-caret-right blue"></i>
+                                                                        <span class="orange">22 min</span>
 
-																	价格
+                                                                    </div>
 
-																</th>
 
 
+                                                                    <div class="text">
 
-																<th class="hidden-480">
+                                                                        <i class="icon-quote-left"></i>
 
-																	<i class="icon-caret-right blue"></i>
+                                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;
 
-																	状态
+                                                                    </div>
 
-																</th>
+                                                                </div>
 
-															</tr>
 
-														</thead>
 
+                                                                <div class="tools">
 
+                                                                    <div class="action-buttons bigger-125">
 
-														<tbody>
+                                                                        <a href="#">
 
-															<tr>
+                                                                            <i class="icon-pencil blue"></i>
 
-																<td>internet.com</td>
+                                                                        </a>
 
 
 
-																<td>
+                                                                        <a href="#">
 
-																	<small>
+                                                                            <i class="icon-trash red"></i>
 
-																		<s class="red">$29.99</s>
+                                                                        </a>
 
-																	</small>
+                                                                    </div>
 
-																	<b class="green">$19.99</b>
+                                                                </div>
 
-																</td>
+                                                            </div>
 
 
 
-																<td class="hidden-480">
+                                                            <div class="itemdiv commentdiv">
 
-																	<span class="label label-info arrowed-right arrowed-in">销售中</span>
+                                                                <div class="user">
 
-																</td>
+                                                                    <img alt="Rita's Avatar" th:src="@{/static/assets/avatars/avatar3.png}" />
 
-															</tr>
+                                                                </div>
 
 
 
-															<tr>
+                                                                <div class="body">
 
-																<td>online.com</td>
+                                                                    <div class="name">
 
+                                                                        <a href="#">Rita</a>
 
+                                                                    </div>
 
-																<td>
 
-																	<small>
 
-																		<s class="red"></s>
+                                                                    <div class="time">
 
-																	</small>
+                                                                        <i class="icon-time"></i>
 
-																	<b class="green">$16.45</b>
+                                                                        <span class="red">50 min</span>
 
-																</td>
+                                                                    </div>
 
 
 
-																<td class="hidden-480">
+                                                                    <div class="text">
 
-																	<span class="label label-success arrowed-in arrowed-in-right">可用</span>
+                                                                        <i class="icon-quote-left"></i>
 
-																</td>
+                                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;
 
-															</tr>
+                                                                    </div>
 
+                                                                </div>
 
 
-															<tr>
 
-																<td>newnet.com</td>
+                                                                <div class="tools">
 
+                                                                    <div class="action-buttons bigger-125">
 
+                                                                        <a href="#">
 
-																<td>
+                                                                            <i class="icon-pencil blue"></i>
 
-																	<small>
+                                                                        </a>
 
-																		<s class="red"></s>
 
-																	</small>
 
-																	<b class="green">$15.00</b>
+                                                                        <a href="#">
 
-																</td>
+                                                                            <i class="icon-trash red"></i>
 
+                                                                        </a>
 
+                                                                    </div>
 
-																<td class="hidden-480">
+                                                                </div>
 
-																	<span class="label label-danger arrowed">待定</span>
+                                                            </div>
 
-																</td>
+                                                        </div>
 
-															</tr>
 
 
+                                                        <div class="hr hr8"></div>
 
-															<tr>
 
-																<td>web.com</td>
 
+                                                        <div class="center">
 
+                                                            <i class="icon-comments-alt icon-2x green"></i>
 
-																<td>
 
-																	<small>
 
-																		<s class="red">$24.99</s>
+                                                            &nbsp;
 
-																	</small>
+                                                            <a href="#">
 
-																	<b class="green">$19.95</b>
+                                                                See all comments &nbsp;
 
-																</td>
+                                                                <i class="icon-arrow-right"></i>
 
+                                                            </a>
 
+                                                        </div>
 
-																<td class="hidden-480">
 
-																	<span class="label arrowed">
 
-																		<s>无货</s>
+                                                        <div class="hr hr-double hr8"></div>
 
-																	</span>
+                                                    </div>
 
-																</td>
+                                                </div>
 
-															</tr>
+                                            </div><!-- /widget-main -->
 
+                                        </div><!-- /widget-body -->
 
+                                    </div><!-- /widget-box -->
 
-															<tr>
+                                </div><!-- /span -->
 
-																<td>domain.com</td>
 
 
+                                <div class="col-sm-6">
 
-																<td>
+                                    <div class="widget-box ">
 
-																	<small>
+                                        <div class="widget-header">
 
-																		<s class="red"></s>
+                                            <h4 class="lighter smaller">
 
-																	</small>
+                                                <i class="icon-comment blue"></i>
 
-																	<b class="green">$12.00</b>
+                                                会话
 
-																</td>
+                                            </h4>
 
+                                        </div>
 
 
-																<td class="hidden-480">
 
-																	<span class="label label-warning arrowed arrowed-right">售完</span>
+                                        <div class="widget-body">
 
-																</td>
+                                            <div class="widget-main no-padding">
 
-															</tr>
+                                                <div class="dialogs">
 
-														</tbody>
+                                                    <div class="itemdiv dialogdiv">
 
-													</table>
+                                                        <div class="user">
 
-												</div><!-- /widget-main -->
+                                                            <img alt="Alexa's Avatar" th:src="@{/static/assets/avatars/avatar1.png}" />
 
-											</div><!-- /widget-body -->
+                                                        </div>
 
-										</div><!-- /widget-box -->
 
-									</div>
 
+                                                        <div class="body">
 
+                                                            <div class="time">
 
-									<div class="col-sm-7">
+                                                                <i class="icon-time"></i>
 
-										<div class="widget-box transparent">
+                                                                <span class="green">4秒钟前</span>
 
-											<div class="widget-header widget-header-flat">
+                                                            </div>
 
-												<h4 class="lighter">
 
-													<i class="icon-signal"></i>
 
-													销售统计
+                                                            <div class="name">
 
-												</h4>
+                                                                <a href="#">Alexa</a>
 
+                                                            </div>
 
+                                                            <div class="text">大家好啊</div>
 
-												<div class="widget-toolbar">
 
-													<a href="#" data-action="collapse">
 
-														<i class="icon-chevron-up"></i>
+                                                            <div class="tools">
 
-													</a>
+                                                                <a href="#" class="btn btn-minier btn-info">
 
-												</div>
+                                                                    <i class="icon-only icon-share-alt"></i>
 
-											</div>
+                                                                </a>
 
+                                                            </div>
 
+                                                        </div>
 
-											<div class="widget-body">
+                                                    </div>
 
-												<div class="widget-main padding-4">
 
-													<div id="sales-charts"></div>
 
-												</div><!-- /widget-main -->
+                                                    <div class="itemdiv dialogdiv">
 
-											</div><!-- /widget-body -->
+                                                        <div class="user">
 
-										</div><!-- /widget-box -->
+                                                            <img alt="John's Avatar" th:src="@{/static/assets/avatars/avatar.png}" />
 
-									</div>
+                                                        </div>
 
-								</div>
 
 
+                                                        <div class="body">
 
-								<div class="hr hr32 hr-dotted"></div>
+                                                            <div class="time">
 
+                                                                <i class="icon-time"></i>
 
+                                                                <span class="blue">38秒以前</span>
 
-								<div class="row">
+                                                            </div>
 
-									<div class="col-sm-6">
 
-										<div class="widget-box transparent" id="recent-box">
 
-											<div class="widget-header">
+                                                            <div class="name">
 
-												<h4 class="lighter smaller">
+                                                                <a href="#">John</a>
 
-													<i class="icon-rss orange"></i>
+                                                            </div>
 
-													最近
+                                                            <div class="text">框架很好用嘛</div>
 
-												</h4>
 
 
+                                                            <div class="tools">
 
-												<div class="widget-toolbar no-border">
+                                                                <a href="#" class="btn btn-minier btn-info">
 
-													<ul class="nav nav-tabs" id="recent-tab">
+                                                                    <i class="icon-only icon-share-alt"></i>
 
-														<li class="active">
+                                                                </a>
 
-															<a data-toggle="tab" href="#task-tab">任务</a>
+                                                            </div>
 
-														</li>
+                                                        </div>
 
+                                                    </div>
 
 
-														<li>
 
-															<a data-toggle="tab" href="#member-tab">会员</a>
+                                                    <div class="itemdiv dialogdiv">
 
-														</li>
+                                                        <div class="user">
 
+                                                            <img alt="Bob's Avatar" th:src="@{/static/assets/avatars/user.jpg}" />
 
+                                                        </div>
 
-														<li>
 
-															<a data-toggle="tab" href="#comment-tab">评论</a>
 
-														</li>
+                                                        <div class="body">
 
-													</ul>
+                                                            <div class="time">
 
-												</div>
+                                                                <i class="icon-time"></i>
 
-											</div>
+                                                                <span class="orange">2分钟以前</span>
 
+                                                            </div>
 
 
-											<div class="widget-body">
 
-												<div class="widget-main padding-4">
+                                                            <div class="name">
 
-													<div class="tab-content padding-8 overflow-visible">
+                                                                <a href="#">Bob</a>
 
-														<div id="task-tab" class="tab-pane active">
+                                                                <span class="label label-info arrowed arrowed-in-right">admin</span>
 
-															<h4 class="smaller lighter green">
+                                                            </div>
 
-																<i class="icon-list"></i>
+                                                            <div class="text">欢迎大家使用ACE后台管理系统.</div>
 
-																可拖拽排序列表
 
-															</h4>
 
+                                                            <div class="tools">
 
+                                                                <a href="#" class="btn btn-minier btn-info">
 
-															<ul id="tasks" class="item-list">
+                                                                    <i class="icon-only icon-share-alt"></i>
 
-																<li class="item-orange clearfix">
+                                                                </a>
 
-																	<label class="inline">
+                                                            </div>
 
-																		<input type="checkbox" class="ace" />
+                                                        </div>
 
-																		<span class="lbl"> 问答</span>
+                                                    </div>
 
-																	</label>
 
 
+                                                    <div class="itemdiv dialogdiv">
 
-																	<div class="pull-right easy-pie-chart percentage" data-size="30" data-color="#ECCB71" data-percent="42">
+                                                        <div class="user">
 
-																		<span class="percent">42</span>%
+                                                            <img alt="Jim's Avatar" th:src="@{/static/assets/avatars/avatar4.png}" />
 
-																	</div>
+                                                        </div>
 
-																</li>
 
 
+                                                        <div class="body">
 
-																<li class="item-red clearfix">
+                                                            <div class="time">
 
-																	<label class="inline">
+                                                                <i class="icon-time"></i>
 
-																		<input type="checkbox" class="ace" />
+                                                                <span class="grey">3分钟以前</span>
 
-																		<span class="lbl"> BUG修复</span>
+                                                            </div>
 
-																	</label>
 
 
+                                                            <div class="name">
 
-																	<div class="pull-right action-buttons">
+                                                                <a href="#">Jim</a>
 
-																		<a href="#" class="blue">
+                                                            </div>
 
-																			<i class="icon-pencil bigger-130"></i>
+                                                            <div class="text">大家多提提BUG</div>
 
-																		</a>
 
 
+                                                            <div class="tools">
 
-																		<span class="vbar"></span>
+                                                                <a href="#" class="btn btn-minier btn-info">
 
+                                                                    <i class="icon-only icon-share-alt"></i>
 
+                                                                </a>
 
-																		<a href="#" class="red">
+                                                            </div>
 
-																			<i class="icon-trash bigger-130"></i>
+                                                        </div>
 
-																		</a>
+                                                    </div>
 
 
 
-																		<span class="vbar"></span>
+                                                    <div class="itemdiv dialogdiv">
 
+                                                        <div class="user">
 
+                                                            <img alt="Alexa's Avatar" th:src="@{/static/assets/avatars/avatar1.png}" />
 
-																		<a href="#" class="green">
+                                                        </div>
 
-																			<i class="icon-flag bigger-130"></i>
 
-																		</a>
 
-																	</div>
+                                                        <div class="body">
 
-																</li>
+                                                            <div class="time">
 
+                                                                <i class="icon-time"></i>
 
+                                                                <span class="green">4分钟以前</span>
 
-																<li class="item-default clearfix">
+                                                            </div>
 
-																	<label class="inline">
 
-																		<input type="checkbox" class="ace" />
 
-																		<span class="lbl">添加新的特征</span>
+                                                            <div class="name">
 
-																	</label>
+                                                                <a href="#">Alexa</a>
 
+                                                            </div>
 
+                                                            <div class="text">继续支持ACE后台系统</div>
 
-																	<div class="inline pull-right position-relative dropdown-hover">
 
-																		<button class="btn btn-minier bigger btn-primary">
 
-																			<i class="icon-cog icon-only bigger-120"></i>
+                                                            <div class="tools">
 
-																		</button>
+                                                                <a href="#" class="btn btn-minier btn-info">
 
+                                                                    <i class="icon-only icon-share-alt"></i>
 
+                                                                </a>
 
-																		<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-caret dropdown-close pull-right">
+                                                            </div>
 
-																			<li>
+                                                        </div>
 
-																				<a href="#" class="tooltip-success" data-rel="tooltip" title="Mark&nbsp;as&nbsp;done">
+                                                    </div>
 
-																					<span class="green">
+                                                </div>
 
-																						<i class="icon-ok bigger-110"></i>
 
-																					</span>
 
-																				</a>
+                                                <form>
 
-																			</li>
+                                                    <div class="form-actions">
 
+                                                        <div class="input-group">
 
+                                                            <input placeholder="Type your message here ..." type="text" class="form-control" name="message" />
 
-																			<li>
+                                                            <span class="input-group-btn">
 
-																				<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+                                                                <button class="btn btn-sm btn-info no-radius" type="button">
 
-																					<span class="red">
+                                                                    <i class="icon-share-alt"></i>
 
-																						<i class="icon-trash bigger-110"></i>
+                                                                    发送
 
-																					</span>
+                                                                </button>
 
-																				</a>
+                                                            </span>
 
-																			</li>
+                                                        </div>
 
-																		</ul>
+                                                    </div>
 
-																	</div>
+                                                </form>
 
-																</li>
+                                            </div><!-- /widget-main -->
 
+                                        </div><!-- /widget-body -->
 
+                                    </div><!-- /widget-box -->
 
-																<li class="item-blue clearfix">
+                                </div><!-- /span -->
 
-																	<label class="inline">
+                            </div><!-- /row -->
 
-																		<input type="checkbox" class="ace" />
 
-																		<span class="lbl"> 更新模版脚本</span>
 
-																	</label>
+                            <!-- PAGE CONTENT ENDS -->
 
-																</li>
+                        </div><!-- /.col -->
 
+                    </div><!-- /.row -->
 
+                </div><!-- /.page-content -->
 
-																<li class="item-grey clearfix">
+            </div><!-- /.main-content -->
 
-																	<label class="inline">
 
-																		<input type="checkbox" class="ace" />
+            <!-- ace-settings-container -->
+            <div th:replace="common/body :: settings"></div>
 
-																		<span class="lbl"> 添加新皮肤</span>
+        </div><!-- /.main-container-inner -->
 
-																	</label>
+        <!--去到顶部-->
+        <a th:replace="common/body :: gototop"> </a>
 
-																</li>
+    </div><!-- /.main-container -->
 
-
-
-																<li class="item-green clearfix">
-
-																	<label class="inline">
-
-																		<input type="checkbox" class="ace" />
-
-																		<span class="lbl"> 升级服务端</span>
-
-																	</label>
-
-																</li>
-
-
-
-																<li class="item-pink clearfix">
-
-																	<label class="inline">
-
-																		<input type="checkbox" class="ace" />
-
-																		<span class="lbl"> 清理垃圾</span>
-
-																	</label>
-
-																</li>
-
-															</ul>
-
-														</div>
-
-
-
-														<div id="member-tab" class="tab-pane">
-
-															<div class="clearfix">
-
-																<div class="itemdiv memberdiv">
-
-																	<div class="user">
-
-																		<img alt="Bob Doe's avatar" th:src="@{/static/assets/avatars/user.jpg}" />
-
-																	</div>
-
-
-
-																	<div class="body">
-
-																		<div class="name">
-
-																			<a href="#">Bob Doe</a>
-
-																		</div>
-
-
-
-																		<div class="time">
-
-																			<i class="icon-time"></i>
-
-																			<span class="green">20 min</span>
-
-																		</div>
-
-
-
-																		<div>
-
-																			<span class="label label-warning label-sm">pending</span>
-
-
-
-																			<div class="inline position-relative">
-
-																				<button class="btn btn-minier bigger btn-yellow btn-no-border dropdown-toggle" data-toggle="dropdown">
-
-																					<i class="icon-angle-down icon-only bigger-120"></i>
-
-																				</button>
-
-
-
-																				<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-
-																					<li>
-
-																						<a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">
-
-																							<span class="green">
-
-																								<i class="icon-ok bigger-110"></i>
-
-																							</span>
-
-																						</a>
-
-																					</li>
-
-
-
-																					<li>
-
-																						<a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">
-
-																							<span class="orange">
-
-																								<i class="icon-remove bigger-110"></i>
-
-																							</span>
-
-																						</a>
-
-																					</li>
-
-
-
-																					<li>
-
-																						<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-
-																							<span class="red">
-
-																								<i class="icon-trash bigger-110"></i>
-
-																							</span>
-
-																						</a>
-
-																					</li>
-
-																				</ul>
-
-																			</div>
-
-																		</div>
-
-																	</div>
-
-																</div>
-
-
-
-																<div class="itemdiv memberdiv">
-
-																	<div class="user">
-
-																		<img alt="Joe Doe's avatar" th:src="@{/static/assets/avatars/avatar2.png}" />
-
-																	</div>
-
-
-
-																	<div class="body">
-
-																		<div class="name">
-
-																			<a href="#">Joe Doe</a>
-
-																		</div>
-
-
-
-																		<div class="time">
-
-																			<i class="icon-time"></i>
-
-																			<span class="green">1 hour</span>
-
-																		</div>
-
-
-
-																		<div>
-
-																			<span class="label label-warning label-sm">pending</span>
-
-
-
-																			<div class="inline position-relative">
-
-																				<button class="btn btn-minier bigger btn-yellow btn-no-border dropdown-toggle" data-toggle="dropdown">
-
-																					<i class="icon-angle-down icon-only bigger-120"></i>
-
-																				</button>
-
-
-
-																				<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-
-																					<li>
-
-																						<a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">
-
-																							<span class="green">
-
-																								<i class="icon-ok bigger-110"></i>
-
-																							</span>
-
-																						</a>
-
-																					</li>
-
-
-
-																					<li>
-
-																						<a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">
-
-																							<span class="orange">
-
-																								<i class="icon-remove bigger-110"></i>
-
-																							</span>
-
-																						</a>
-
-																					</li>
-
-
-
-																					<li>
-
-																						<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-
-																							<span class="red">
-
-																								<i class="icon-trash bigger-110"></i>
-
-																							</span>
-
-																						</a>
-
-																					</li>
-
-																				</ul>
-
-																			</div>
-
-																		</div>
-
-																	</div>
-
-																</div>
-
-
-
-																<div class="itemdiv memberdiv">
-
-																	<div class="user">
-
-																		<img alt="Jim Doe's avatar" th:src="@{/static/assets/avatars/avatar.png}" />
-
-																	</div>
-
-
-
-																	<div class="body">
-
-																		<div class="name">
-
-																			<a href="#">Jim Doe</a>
-
-																		</div>
-
-
-
-																		<div class="time">
-
-																			<i class="icon-time"></i>
-
-																			<span class="green">2 hour</span>
-
-																		</div>
-
-
-
-																		<div>
-
-																			<span class="label label-warning label-sm">pending</span>
-
-
-
-																			<div class="inline position-relative">
-
-																				<button class="btn btn-minier bigger btn-yellow btn-no-border dropdown-toggle" data-toggle="dropdown">
-
-																					<i class="icon-angle-down icon-only bigger-120"></i>
-
-																				</button>
-
-
-
-																				<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-
-																					<li>
-
-																						<a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">
-
-																							<span class="green">
-
-																								<i class="icon-ok bigger-110"></i>
-
-																							</span>
-
-																						</a>
-
-																					</li>
-
-
-
-																					<li>
-
-																						<a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">
-
-																							<span class="orange">
-
-																								<i class="icon-remove bigger-110"></i>
-
-																							</span>
-
-																						</a>
-
-																					</li>
-
-
-
-																					<li>
-
-																						<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-
-																							<span class="red">
-
-																								<i class="icon-trash bigger-110"></i>
-
-																							</span>
-
-																						</a>
-
-																					</li>
-
-																				</ul>
-
-																			</div>
-
-																		</div>
-
-																	</div>
-
-																</div>
-
-
-
-																<div class="itemdiv memberdiv">
-
-																	<div class="user">
-
-																		<img alt="Alex Doe's avatar" th:src="@{/static/assets/avatars/avatar5.png}" />
-
-																	</div>
-
-
-
-																	<div class="body">
-
-																		<div class="name">
-
-																			<a href="#">Alex Doe</a>
-
-																		</div>
-
-
-
-																		<div class="time">
-
-																			<i class="icon-time"></i>
-
-																			<span class="green">3 hour</span>
-
-																		</div>
-
-
-
-																		<div>
-
-																			<span class="label label-danger label-sm">blocked</span>
-
-																		</div>
-
-																	</div>
-
-																</div>
-
-
-
-																<div class="itemdiv memberdiv">
-
-																	<div class="user">
-
-																		<img alt="Bob Doe's avatar" th:src="@{/static/assets/avatars/avatar2.png}" />
-
-																	</div>
-
-
-
-																	<div class="body">
-
-																		<div class="name">
-
-																			<a href="#">Bob Doe</a>
-
-																		</div>
-
-
-
-																		<div class="time">
-
-																			<i class="icon-time"></i>
-
-																			<span class="green">6 hour</span>
-
-																		</div>
-
-
-
-																		<div>
-
-																			<span class="label label-success label-sm arrowed-in">approved</span>
-
-																		</div>
-
-																	</div>
-
-																</div>
-
-
-
-																<div class="itemdiv memberdiv">
-
-																	<div class="user">
-
-																		<img alt="Susan's avatar" th:src="@{/static/assets/avatars/avatar3.png}" />
-
-																	</div>
-
-
-
-																	<div class="body">
-
-																		<div class="name">
-
-																			<a href="#">Susan</a>
-
-																		</div>
-
-
-
-																		<div class="time">
-
-																			<i class="icon-time"></i>
-
-																			<span class="green">yesterday</span>
-
-																		</div>
-
-
-
-																		<div>
-
-																			<span class="label label-success label-sm arrowed-in">approved</span>
-
-																		</div>
-
-																	</div>
-
-																</div>
-
-
-
-																<div class="itemdiv memberdiv">
-
-																	<div class="user">
-
-																		<img alt="Phil Doe's avatar" th:src="@{/static/assets/avatars/avatar4.png}" />
-
-																	</div>
-
-
-
-																	<div class="body">
-
-																		<div class="name">
-
-																			<a href="#">Phil Doe</a>
-
-																		</div>
-
-
-
-																		<div class="time">
-
-																			<i class="icon-time"></i>
-
-																			<span class="green">2 days ago</span>
-
-																		</div>
-
-
-
-																		<div>
-
-																			<span class="label label-info label-sm arrowed-in arrowed-in-right">online</span>
-
-																		</div>
-
-																	</div>
-
-																</div>
-
-
-
-																<div class="itemdiv memberdiv">
-
-																	<div class="user">
-
-																		<img alt="Alexa Doe's avatar" th:src="@{/static/assets/avatars/avatar1.png}" />
-
-																	</div>
-
-
-
-																	<div class="body">
-
-																		<div class="name">
-
-																			<a href="#">Alexa Doe</a>
-
-																		</div>
-
-
-
-																		<div class="time">
-
-																			<i class="icon-time"></i>
-
-																			<span class="green">3天以前</span>
-
-																		</div>
-
-
-
-																		<div>
-
-																			<span class="label label-success label-sm arrowed-in">approved</span>
-
-																		</div>
-
-																	</div>
-
-																</div>
-
-															</div>
-
-
-
-															<div class="center">
-
-																<i class="icon-group icon-2x green"></i>
-
-
-
-																&nbsp;
-
-																<a href="#">
-
-																	查看所有会员 &nbsp;
-
-																	<i class="icon-arrow-right"></i>
-
-																</a>
-
-															</div>
-
-
-
-															<div class="hr hr-double hr8"></div>
-
-														</div><!-- member-tab -->
-
-
-
-														<div id="comment-tab" class="tab-pane">
-
-															<div class="comments">
-
-																<div class="itemdiv commentdiv">
-
-																	<div class="user">
-
-																		<img alt="Bob Doe's Avatar" th:src="@{/static/assets/avatars/avatar.png}" />
-
-																	</div>
-
-
-
-																	<div class="body">
-
-																		<div class="name">
-
-																			<a href="#">Bob Doe</a>
-
-																		</div>
-
-
-
-																		<div class="time">
-
-																			<i class="icon-time"></i>
-
-																			<span class="green">6 min</span>
-
-																		</div>
-
-
-
-																		<div class="text">
-
-																			<i class="icon-quote-left"></i>
-
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;
-
-																		</div>
-
-																	</div>
-
-
-
-																	<div class="tools">
-
-																		<div class="inline position-relative">
-
-																			<button class="btn btn-minier bigger btn-yellow dropdown-toggle" data-toggle="dropdown">
-
-																				<i class="icon-angle-down icon-only bigger-120"></i>
-
-																			</button>
-
-
-
-																			<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-
-																				<li>
-
-																					<a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">
-
-																						<span class="green">
-
-																							<i class="icon-ok bigger-110"></i>
-
-																						</span>
-
-																					</a>
-
-																				</li>
-
-
-
-																				<li>
-
-																					<a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">
-
-																						<span class="orange">
-
-																							<i class="icon-remove bigger-110"></i>
-
-																						</span>
-
-																					</a>
-
-																				</li>
-
-
-
-																				<li>
-
-																					<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-
-																						<span class="red">
-
-																							<i class="icon-trash bigger-110"></i>
-
-																						</span>
-
-																					</a>
-
-																				</li>
-
-																			</ul>
-
-																		</div>
-
-																	</div>
-
-																</div>
-
-
-
-																<div class="itemdiv commentdiv">
-
-																	<div class="user">
-
-																		<img alt="Jennifer's Avatar" th:src="@{/static/assets/avatars/avatar1.png}" />
-
-																	</div>
-
-
-
-																	<div class="body">
-
-																		<div class="name">
-
-																			<a href="#">Jennifer</a>
-
-																		</div>
-
-
-
-																		<div class="time">
-
-																			<i class="icon-time"></i>
-
-																			<span class="blue">15 min</span>
-
-																		</div>
-
-
-
-																		<div class="text">
-
-																			<i class="icon-quote-left"></i>
-
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;
-
-																		</div>
-
-																	</div>
-
-
-
-																	<div class="tools">
-
-																		<div class="action-buttons bigger-125">
-
-																			<a href="#">
-
-																				<i class="icon-pencil blue"></i>
-
-																			</a>
-
-
-
-																			<a href="#">
-
-																				<i class="icon-trash red"></i>
-
-																			</a>
-
-																		</div>
-
-																	</div>
-
-																</div>
-
-
-
-																<div class="itemdiv commentdiv">
-
-																	<div class="user">
-
-																		<img alt="Joe's Avatar" th:src="@{/static/assets/avatars/avatar2.png}" />
-
-																	</div>
-
-
-
-																	<div class="body">
-
-																		<div class="name">
-
-																			<a href="#">Joe</a>
-
-																		</div>
-
-
-
-																		<div class="time">
-
-																			<i class="icon-time"></i>
-
-																			<span class="orange">22 min</span>
-
-																		</div>
-
-
-
-																		<div class="text">
-
-																			<i class="icon-quote-left"></i>
-
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;
-
-																		</div>
-
-																	</div>
-
-
-
-																	<div class="tools">
-
-																		<div class="action-buttons bigger-125">
-
-																			<a href="#">
-
-																				<i class="icon-pencil blue"></i>
-
-																			</a>
-
-
-
-																			<a href="#">
-
-																				<i class="icon-trash red"></i>
-
-																			</a>
-
-																		</div>
-
-																	</div>
-
-																</div>
-
-
-
-																<div class="itemdiv commentdiv">
-
-																	<div class="user">
-
-																		<img alt="Rita's Avatar" th:src="@{/static/assets/avatars/avatar3.png}" />
-
-																	</div>
-
-
-
-																	<div class="body">
-
-																		<div class="name">
-
-																			<a href="#">Rita</a>
-
-																		</div>
-
-
-
-																		<div class="time">
-
-																			<i class="icon-time"></i>
-
-																			<span class="red">50 min</span>
-
-																		</div>
-
-
-
-																		<div class="text">
-
-																			<i class="icon-quote-left"></i>
-
-																			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;
-
-																		</div>
-
-																	</div>
-
-
-
-																	<div class="tools">
-
-																		<div class="action-buttons bigger-125">
-
-																			<a href="#">
-
-																				<i class="icon-pencil blue"></i>
-
-																			</a>
-
-
-
-																			<a href="#">
-
-																				<i class="icon-trash red"></i>
-
-																			</a>
-
-																		</div>
-
-																	</div>
-
-																</div>
-
-															</div>
-
-
-
-															<div class="hr hr8"></div>
-
-
-
-															<div class="center">
-
-																<i class="icon-comments-alt icon-2x green"></i>
-
-
-
-																&nbsp;
-
-																<a href="#">
-
-																	See all comments &nbsp;
-
-																	<i class="icon-arrow-right"></i>
-
-																</a>
-
-															</div>
-
-
-
-															<div class="hr hr-double hr8"></div>
-
-														</div>
-
-													</div>
-
-												</div><!-- /widget-main -->
-
-											</div><!-- /widget-body -->
-
-										</div><!-- /widget-box -->
-
-									</div><!-- /span -->
-
-
-
-									<div class="col-sm-6">
-
-										<div class="widget-box ">
-
-											<div class="widget-header">
-
-												<h4 class="lighter smaller">
-
-													<i class="icon-comment blue"></i>
-
-													会话
-
-												</h4>
-
-											</div>
-
-
-
-											<div class="widget-body">
-
-												<div class="widget-main no-padding">
-
-													<div class="dialogs">
-
-														<div class="itemdiv dialogdiv">
-
-															<div class="user">
-
-																<img alt="Alexa's Avatar" th:src="@{/static/assets/avatars/avatar1.png}" />
-
-															</div>
-
-
-
-															<div class="body">
-
-																<div class="time">
-
-																	<i class="icon-time"></i>
-
-																	<span class="green">4秒钟前</span>
-
-																</div>
-
-
-
-																<div class="name">
-
-																	<a href="#">Alexa</a>
-
-																</div>
-
-																<div class="text">大家好啊</div>
-
-
-
-																<div class="tools">
-
-																	<a href="#" class="btn btn-minier btn-info">
-
-																		<i class="icon-only icon-share-alt"></i>
-
-																	</a>
-
-																</div>
-
-															</div>
-
-														</div>
-
-
-
-														<div class="itemdiv dialogdiv">
-
-															<div class="user">
-
-																<img alt="John's Avatar" th:src="@{/static/assets/avatars/avatar.png}" />
-
-															</div>
-
-
-
-															<div class="body">
-
-																<div class="time">
-
-																	<i class="icon-time"></i>
-
-																	<span class="blue">38秒以前</span>
-
-																</div>
-
-
-
-																<div class="name">
-
-																	<a href="#">John</a>
-
-																</div>
-
-																<div class="text">框架很好用嘛</div>
-
-
-
-																<div class="tools">
-
-																	<a href="#" class="btn btn-minier btn-info">
-
-																		<i class="icon-only icon-share-alt"></i>
-
-																	</a>
-
-																</div>
-
-															</div>
-
-														</div>
-
-
-
-														<div class="itemdiv dialogdiv">
-
-															<div class="user">
-
-																<img alt="Bob's Avatar" th:src="@{/static/assets/avatars/user.jpg}" />
-
-															</div>
-
-
-
-															<div class="body">
-
-																<div class="time">
-
-																	<i class="icon-time"></i>
-
-																	<span class="orange">2分钟以前</span>
-
-																</div>
-
-
-
-																<div class="name">
-
-																	<a href="#">Bob</a>
-
-																	<span class="label label-info arrowed arrowed-in-right">admin</span>
-
-																</div>
-
-																<div class="text">欢迎大家使用ACE后台管理系统.</div>
-
-
-
-																<div class="tools">
-
-																	<a href="#" class="btn btn-minier btn-info">
-
-																		<i class="icon-only icon-share-alt"></i>
-
-																	</a>
-
-																</div>
-
-															</div>
-
-														</div>
-
-
-
-														<div class="itemdiv dialogdiv">
-
-															<div class="user">
-
-																<img alt="Jim's Avatar" th:src="@{/static/assets/avatars/avatar4.png}" />
-
-															</div>
-
-
-
-															<div class="body">
-
-																<div class="time">
-
-																	<i class="icon-time"></i>
-
-																	<span class="grey">3分钟以前</span>
-
-																</div>
-
-
-
-																<div class="name">
-
-																	<a href="#">Jim</a>
-
-																</div>
-
-																<div class="text">大家多提提BUG</div>
-
-
-
-																<div class="tools">
-
-																	<a href="#" class="btn btn-minier btn-info">
-
-																		<i class="icon-only icon-share-alt"></i>
-
-																	</a>
-
-																</div>
-
-															</div>
-
-														</div>
-
-
-
-														<div class="itemdiv dialogdiv">
-
-															<div class="user">
-
-																<img alt="Alexa's Avatar" th:src="@{/static/assets/avatars/avatar1.png}" />
-
-															</div>
-
-
-
-															<div class="body">
-
-																<div class="time">
-
-																	<i class="icon-time"></i>
-
-																	<span class="green">4分钟以前</span>
-
-																</div>
-
-
-
-																<div class="name">
-
-																	<a href="#">Alexa</a>
-
-																</div>
-
-																<div class="text">继续支持ACE后台系统</div>
-
-
-
-																<div class="tools">
-
-																	<a href="#" class="btn btn-minier btn-info">
-
-																		<i class="icon-only icon-share-alt"></i>
-
-																	</a>
-
-																</div>
-
-															</div>
-
-														</div>
-
-													</div>
-
-
-
-													<form>
-
-														<div class="form-actions">
-
-															<div class="input-group">
-
-																<input placeholder="Type your message here ..." type="text" class="form-control" name="message" />
-
-																<span class="input-group-btn">
-
-																	<button class="btn btn-sm btn-info no-radius" type="button">
-
-																		<i class="icon-share-alt"></i>
-
-																		发送
-
-																	</button>
-
-																</span>
-
-															</div>
-
-														</div>
-
-													</form>
-
-												</div><!-- /widget-main -->
-
-											</div><!-- /widget-body -->
-
-										</div><!-- /widget-box -->
-
-									</div><!-- /span -->
-
-								</div><!-- /row -->
-
-
-
-								<!-- PAGE CONTENT ENDS -->
-
-							</div><!-- /.col -->
-
-						</div><!-- /.row -->
-
-					</div><!-- /.page-content -->
-
-				</div><!-- /.main-content -->
-
-
-
-				<div class="ace-settings-container" id="ace-settings-container">
-
-					<div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
-
-						<i class="icon-cog bigger-150"></i>
-
-					</div>
-
-
-
-					<div class="ace-settings-box" id="ace-settings-box">
-
-						<div>
-
-							<div class="pull-left">
-
-								<select id="skin-colorpicker" class="hide">
-
-									<option data-skin="default" value="#438EB9">#438EB9</option>
-
-									<option data-skin="skin-1" value="#222A2D">#222A2D</option>
-
-									<option data-skin="skin-2" value="#C6487E">#C6487E</option>
-
-									<option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
-
-								</select>
-
-							</div>
-
-							<span>&nbsp; 选择皮肤</span>
-
-						</div>
-
-
-
-						<div>
-
-							<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
-
-							<label class="lbl" for="ace-settings-navbar"> 固定导航条</label>
-
-						</div>
-
-
-
-						<div>
-
-							<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
-
-							<label class="lbl" for="ace-settings-sidebar"> 固定滑动条</label>
-
-						</div>
-
-
-
-						<div>
-
-							<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
-
-							<label class="lbl" for="ace-settings-breadcrumbs">固定面包屑</label>
-
-						</div>
-
-
-
-						<div>
-
-							<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
-
-							<label class="lbl" for="ace-settings-rtl">切换到左边</label>
-
-						</div>
-
-
-
-						<div>
-
-							<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
-
-							<label class="lbl" for="ace-settings-add-container">
-
-								切换窄屏
-
-								<b></b>
-
-							</label>
-
-						</div>
-
-					</div>
-
-				</div><!-- /#ace-settings-container -->
-
-			</div><!-- /.main-container-inner -->
-
-
-
-			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-
-				<i class="icon-double-angle-up icon-only bigger-110"></i>
-
-			</a>
-
-		</div><!-- /.main-container -->
-
-
-		<!--<script th:replace="/common/body::indexbody"></script>-->
-
-
-
-		<script type="text/javascript">
+	<script type="text/javascript">
 
 			jQuery(function($) {
 
@@ -4087,8 +2708,6 @@
 			})
 
 		</script>
-
-
 
 </body>
 
