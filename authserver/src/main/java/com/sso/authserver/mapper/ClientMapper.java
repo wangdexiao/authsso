@@ -20,4 +20,16 @@ public interface ClientMapper {
             " from t_client_info where client_id = #{clientId}")
     ClientInfo loadClientByClientId(String clientId);
 
+    @Select("select client_id as clientId," +
+            "client_secret as secret,resource_ids as resourceIds," +
+            "authorized_grant_types as authTypes," +
+            "access_token_validity as accessTokenValiditySeconds ," +
+            "refresh_token_validity as refreshTokenValiditySeconds," +
+            "scope as scopes," +
+            "autoapprove as autoApprove," +
+            "web_server_redirect_uri as redirectUris," +
+            "authorities " +
+            " from oauth_client_details ")
+    ClientInfo getClients();
+
 }

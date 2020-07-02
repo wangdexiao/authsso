@@ -44,5 +44,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/error-500.html").setViewName("error-500");
         registry.addViewController("/grid.html").setViewName("grid");
         registry.addViewController("/blank.html").setViewName("blank");
+
+//        registry.addViewController("/clientmanage.html").setViewName("clientmanage");
     }
 }
