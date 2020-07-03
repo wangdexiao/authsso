@@ -4,19 +4,37 @@
     <meta charset="utf-8" />
     <title>控制台 - Bootstrap后台管理系统模版Ace下载</title>
     <script th:replace="/common/head::static"></script>
+
 </head>
 
 <body>
 
-<script type="text/javascript">
-    function addClient() {
-        alert("addClient");
-    }
+
+<script th:inline="javascript">
+
     jQuery(function($) {
-        window.prettyPrint && prettyPrint();
-        function addClient() {
-            alert("addClient")
-        }
+        // window.prettyPrint && prettyPrint();
+
+        /*添加sso 客户端*/
+        addClient = function(clientId) {
+
+            var clientId = $('#clientId').val();
+            var resIds = $('#resids').val();
+            var secret = $('#secret').val();
+            var scopeOfAuth = $('#scopeofauth').val();
+            var wayofAuth = [];
+            $("[name='wayofauth']").filter(":checked").each(function () {
+                wayofAuth.push($(this).val());
+            }); /*可以使用this.value+',';   或者   $(this).val()+',';*/
+
+            var redirectUrl = $('#redirecturl').val();
+            var tokenValidTime = $('#token_valid_time').val();
+            var refreshTokenValidTime = $('#refresh_token_valid_time').val();
+            var autoAuth = $("input[name='auto_auth']:checked").val();
+            $.post()
+        };
+
+
     })
 
 </script>
@@ -101,9 +119,14 @@
 
                                                     <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
                                                        <!-- <a  th:οnclick="'javascript:del('+this+','+${user.id}+');'" ></a>-->
-                                                        <a class="blue" href="#" onclick="addClinet()">
+                                                        <!--现在的写法：-->
+<!--                                                        <a class="blue" href="#" th:onclick="addClient([[${client.clientId}]]);">-->
+<!--                                                            <i class="icon-zoom-in bigger-130" ></i>-->
+<!--                                                        </a>-->
+                                                        <a class="blue" href="#" data-toggle="modal" data-target="#myModal">
                                                             <i class="icon-zoom-in bigger-130" ></i>
                                                         </a>
+
                                                         <a class="green" href="#"><i class="icon-pencil bigger-130"></i></a>
                                                         <a class="red" href="#"><i class="icon-trash bigger-130"></i></a>
                                                     </div>
@@ -117,8 +140,8 @@
                                                             <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
                                                                 <li>
                                                                     <a href="#" class="tooltip-info" data-rel="tooltip"
-                                                                       title="View">
-                                                                        <span class="blue" onclick="addClient()"><i
+                                                                       title="View" onclick="">
+                                                                        <span class="blue" ><i
                                                                                 class="icon-zoom-in bigger-120"></i></span>
                                                                     </a>
                                                                 </li>
@@ -142,7 +165,7 @@
 
                                                 </td>
 
-                                                <td class="col-xs-1" th:text=""></td>
+                                                <td class="col-xs-1" ></td>
                                             </tr>
 
 
@@ -171,27 +194,81 @@
         <!--去到顶部-->
         <a th:replace="common/body :: gototop"> </a>
 
+
     </div><!-- /.main-container -->
 
-<!--<script th:inline="javascript">-->
-<!--    alert('asdfasdfadsf');-->
-<!--    /*<![CDATA[*/-->
-<!--    alert('asdfasdfadsf');-->
-<!--        function addClinet() {-->
-<!--            alert('sdfasdfa')-->
-<!--        }-->
-<!--        jQuery(function ($) {-->
-
-<!--            alert('asdfasdfadsf');-->
-<!--            function addClinet() {-->
-<!--                alert('sdfasdfa')-->
-<!--            }-->
-<!--        });-->
-<!--    /*]]>*/-->
 
 
 
-<!--</script>-->
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">客户端添加</h4>
+            </div>
+            <div class="modal-body">
+                    <form th:action="@{clients/add}" method="post" th:object="${client}">
+                        <div class="form-group">
+                            <label for="clientId">客户端id</label>
+                            <input type="email" th:field="*{clientId}"  class="form-control" id="clientId" placeholder="请输入客户端id"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="resids">资源id</label>
+                            <input type="text" th:field="*{resourceIds}" class="form-control" id="resids" placeholder="请输入资源id"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="secret">密钥</label>
+                            <input type="text" th:field="*{secret}" class="form-control" id="secret" placeholder="请输入密钥"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="scopeofauth">授权范围</label>
+                            <input type="text" class="form-control" id="scopeofauth" placeholder="请输入授权返回(all)"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="scopeofauth">授权方式</label><br>
+                            <input type="checkbox" name="wayofauth" >authorization_code &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" name="wayofauth" >password &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" name="wayofauth" >implicit<br>
+                            <input type="checkbox" name="wayofauth" >client_credentials &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" name="wayofauth" >refresh_token &nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                        <div class="form-group">
+                            <label for="redirecturl">回调地址</label>
+                            <input type="text" class="form-control" id="redirecturl" placeholder="请输入回调地址(http://127.0.0.1:9002/client/login)"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="permissions">权限</label>
+                            <input type="text" class="form-control" id="permissions" placeholder="请输入权限(可空)"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="token_valid_time">token有效时间(s)</label>
+                            <input type="number" class="form-control" id="token_valid_time" placeholder="请输入token有效时间(3600)"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="refresh_token_valid_time">刷新token有效时间(s)</label>
+                            <input type="number" class="form-control" id="refresh_token_valid_time" placeholder="请输入刷新token有效时间(360000)"/>
+                        </div>
+                        <div class="form-group">
+                            <label >是否自动授权</label><br>
+                            <input type="radio"  name="auto_auth"  checked="checked"/>是 &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio"  name="auto_auth"  />否 <br>
+                        </div>
+
+                        <!--<button type="submit" class="btn btn-default">Submit</button>-->
+                    </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button id="addclient" type="button" class="btn btn-primary" onclick="addClient()">添加</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

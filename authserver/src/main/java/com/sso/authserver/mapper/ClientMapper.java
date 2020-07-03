@@ -1,6 +1,7 @@
 package com.sso.authserver.mapper;
 
 import com.sso.authserver.entity.ClientInfo;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.security.oauth2.provider.ClientDetails;
@@ -31,5 +32,9 @@ public interface ClientMapper {
             "authorities " +
             " from oauth_client_details ")
     ClientInfo getClients();
+
+    @Insert({ "insert into sys_role( client_id, resource_ids, client_secret, scope,authorized_grant_types,web_server_redirect_uri,authorities,access_token_validity,refresh_token_validity,autoapprove) " +
+            "values( #{clientId}, #{resourceIds}, #{secret}, #{scopes},#{authTypes},#{redirectUris},#{accessTokenValiditySeconds},#{refreshTokenValiditySeconds},#{autoApprove})" })
+    ClientInfo addClient(ClientInfo clientInfo);
 
 }
