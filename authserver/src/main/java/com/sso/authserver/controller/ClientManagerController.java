@@ -1,14 +1,12 @@
 package com.sso.authserver.controller;
 
 import com.sso.authserver.entity.ClientInfo;
+import com.sso.authserver.entity.Result;
 import com.sso.authserver.mapper.ClientMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -24,17 +22,33 @@ public class ClientManagerController {
 
     @GetMapping("/")
     public String getClients(Map<String,Object> map){
-        ClientInfo clients = clientMapper.getClients();
+        List<ClientInfo> clients = clientMapper.getClients();
         map.put("clients", clients);
         return "clientmanage";
     }
 
-    @GetMapping("/add")
-    public String getClients(Model model,ClientInfo client){
+    /**
+     * 客户端添加
+     * @param client
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(path = "/add",method = {RequestMethod.POST,RequestMethod.GET})
+    public Result getClients(/*Model model,*/ClientInfo client){
         log.info("请求的客户端信息:" + client.toString());
-        ClientInfo clientInfo = clientMapper.addClient(client);
-        ClientInfo clients = clientMapper.getClients();
-        model.addAttribute("clients", clients);
-        return "clientmanage";
+        int i = clientMapper.addClient(client);
+        log.info("添加id返回值:" + i);
+//        List<ClientInfo> clients = clientMapper.getClients();
+//        model.addAttribute("clients", clients);
+        return Result.<String>sucess("添加客户端成功");
     }
+
+
+    @ResponseBody
+    @RequestMapping(path = "/del",method = {RequestMethod.POST,RequestMethod.GET})
+    public Result delClient( ClientInfo clientInfo){
+        int i = clientMapper.delClientById(clientInfo.getClientId());
+        return Result.<String>sucess("删除客户端成功");
+    }
+
 }

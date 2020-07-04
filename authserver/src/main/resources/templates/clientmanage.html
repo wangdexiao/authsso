@@ -12,266 +12,324 @@
 
 <script th:inline="javascript">
 
-    jQuery(function($) {
+    jQuery(function ($) {
         // window.prettyPrint && prettyPrint();
 
         /*添加sso 客户端*/
-        addClient = function(clientId) {
+        addClient = function (clientId) {
 
-            var clientId = $('#clientId').val();
-            var resIds = $('#resids').val();
-            var secret = $('#secret').val();
-            var scopeOfAuth = $('#scopeofauth').val();
-            var wayofAuth = [];
-            $("[name='wayofauth']").filter(":checked").each(function () {
-                wayofAuth.push($(this).val());
-            }); /*可以使用this.value+',';   或者   $(this).val()+',';*/
-
-            var redirectUrl = $('#redirecturl').val();
-            var tokenValidTime = $('#token_valid_time').val();
-            var refreshTokenValidTime = $('#refresh_token_valid_time').val();
-            var autoAuth = $("input[name='auto_auth']:checked").val();
-            $.post()
+            // document.getElementById("addclient").submit();
+            $.ajax({
+                type: "POST",
+                url: "add",
+                data:$('#addclient').serialize(),
+                async: false,
+                error: function(request) {
+                    alert("Connection error");
+                },
+                success: function(data) {
+                    //接收后台返回的结果
+                    console.log("添加客户端返回结果:" + data);
+                    window.location.reload()
+                }
+            });
         };
+        delClient = function () {
+            var  clientId = $('#delClientModal').data('clientId');
+            console.log("clientId:" + clientId);
+            $.ajax({
+                url: "del",
+                type: 'post',
+                contentType: 'application/x-www-form-urlencoded',
+                data:  {
+                    clientId: clientId,
+                    name: "test"
+                } ,
+                success: function (data, textStatus, jqXHR) {
+                    alert(data)
+                    window.location.reload()
+                }
+            })
 
+            // location.href = "del";
+
+        };
+        $('#delClientModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var clientId = button.data('whatever'); // Extract info from data-* attributes
+            console.log("clientId:" + clientId);
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            // var modal = $(this);
+            // var find = modal.find('#delClientModal');
+            $('#delClientModal').data("clientId", clientId);
+        })
 
     })
 
 </script>
-    <!--头部-->
-    <div th:replace="common/body :: navbar"></div>
+<!--头部-->
+<div th:replace="common/body :: navbar"></div>
 
-    <!--主体-->
-    <div class="main-container" id="main-container">
+<!--主体-->
+<div class="main-container" id="main-container">
 
-        <script type="text/javascript">
-            try{ace.settings.check('main-container' , 'fixed')}catch(e){}
-        </script>
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+    </script>
 
-        <div class="main-container-inner">
-            <!--左侧菜单栏-->
-            <div th:replace="common/body :: sidebar"></div>
+    <div class="main-container-inner">
+        <!--左侧菜单栏-->
+        <div th:replace="common/body :: sidebar"></div>
 
-            <div class="main-content">
+        <div class="main-content">
 
-                <!--路径栏-->
-                <div th:replace="common/body :: breadcrumbs"></div>
+            <!--路径栏-->
+            <div th:replace="common/body :: breadcrumbs"></div>
 
-                <!--页面内容-->
-                <div class="page-content">
+            <!--页面内容-->
+            <div class="page-content">
 
-                    <div class="row">
+                <div class="row">
 
-                        <div class="col-xs-12">
-                                <div >
-                                    <h3 class="header smaller lighter blue">客户端管理</h3><!--jQuery dataTables-->
-                                    <div class="table-header">
-                                        Results for "Latest Registered Domains"
-                                    </div>
+                    <div class="col-xs-12">
+                        <div>
+                            <h3 class="header smaller lighter blue">客户端管理</h3><!--jQuery dataTables-->
+                            <div class="table-header">
+                                Results for "Latest Registered Domains"
+                            </div>
 
-                                    <div class="table-responsive">
-                                        <table id="sample-table-2" class="table table-striped table-bordered table-hover">
-                                            <thead >
-                                            <tr  class="row">
+                            <div class="table-responsive">
+                                <table id="sample-table-2" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr class="row">
 
-                                                <!--<th class="center">
-                                                    <label><input type="checkbox" class="ace" /><span class="lbl"></span></label>
-                                                </th>-->
+                                        <!--<th class="center">
+                                            <label><input type="checkbox" class="ace" /><span class="lbl"></span></label>
+                                        </th>-->
 
-                                                <th class="col-xs-1">客户端id</th>
-                                                <th class="col-xs-1">资源ids</th>
-                                                <th class="col-xs-1">密钥</th>
-                                                <th class="col-xs-1">授权范围</th>
-                                                <th class="col-xs-1">授权方式</th>
-                                                <th class="col-xs-1">回调地址</th>
-                                                <th class="col-xs-1">权限</th>
-                                                <th class="col-xs-1">token有效时间(s)</th>
-                                                <th class="col-xs-1">刷新token有效时间(s)</th>
-                                                <!--<th>additional_informat</th>-->
-                                                <th class="col-xs-1">是否自动授权</th>
-                                                <th class="col-xs-1">操作</th>
-                                                <th class="col-xs-1"></th>
+                                        <th class="col-xs-1">客户端id</th>
+                                        <th class="col-xs-1">资源ids</th>
+                                        <th class="col-xs-1">密钥</th>
+                                        <th class="col-xs-1">授权范围</th>
+                                        <th class="col-xs-1">授权方式</th>
+                                        <th class="col-xs-1">回调地址</th>
+                                        <th class="col-xs-1">权限</th>
+                                        <th class="col-xs-1">token有效时间(s)</th>
+                                        <th class="col-xs-1">刷新token有效时间(s)</th>
+                                        <!--<th>additional_informat</th>-->
+                                        <th class="col-xs-1">是否自动授权</th>
+                                        <th class="col-xs-1">操作</th>
+                                        <th class="col-xs-1"></th>
 
-                                            </tr>
-                                            </thead>
+                                    </tr>
+                                    </thead>
 
-                                            <tbody>
-                                            <tr class="row" th:each="client: ${clients}">
-                                                <!--<td class="center">
-                                                    <label><input type="checkbox" class="ace" /><span class="lbl"></span></label>
-                                                </td>-->
-                                                <td class="col-xs-1" th:text="${client.clientId}">默认字符串</td>
-                                                <td class="col-xs-1" th:text="${client.resourceIds}">资源ids</td>
-                                                <td class="col-xs-1" th:text="${client.secret}">默认密钥</td>
-                                                <td class="col-xs-1" th:text="${client.scopes}">授权范围</td>
-                                                <td class="col-xs-1" th:text="${client.authTypes}">资源ids</td>
-                                                <td class="col-xs-1" th:text="${client.redirectUris}">回调地址</td>
-                                                <td class="col-xs-1" th:text="${client.authorities}">权限</td>
-                                                <td class="col-xs-1" th:text="${client.accessTokenValiditySeconds}">
-                                                    token有效时间(s)
-                                                </td>
-                                                <td class="col-xs-1" th:text="${client.refreshTokenValiditySeconds}">
-                                                    刷新token有效时间(s)
-                                                </td>
-                                                <!-- <td th:text="${client.refreshTokenValiditySeconds}"></td>-->
-                                                <td class="col-xs-1" th:text="${client.autoApprove}">是否自动授权</td>
-                                                <td class="col-xs-1">
+                                    <tbody>
+                                    <tr class="row" th:each="client: ${clients}">
+                                        <!--<td class="center">
+                                            <label><input type="checkbox" class="ace" /><span class="lbl"></span></label>
+                                        </td>-->
+                                        <td class="col-xs-1" th:text="${client.clientId}">默认字符串</td>
+                                        <td class="col-xs-1" th:text="${client.resourceIds}">资源ids</td>
+                                        <td class="col-xs-1" th:text="${client.secret}">默认密钥</td>
+                                        <td class="col-xs-1" th:text="${client.scopes}">授权范围</td>
+                                        <td class="col-xs-1" th:text="${client.authTypes}">资源ids</td>
+                                        <td class="col-xs-1" th:text="${client.redirectUris}">回调地址</td>
+                                        <td class="col-xs-1" th:text="${client.authorities}">权限</td>
+                                        <td class="col-xs-1" th:text="${client.accessTokenValiditySeconds}">
+                                            token有效时间(s)
+                                        </td>
+                                        <td class="col-xs-1" th:text="${client.refreshTokenValiditySeconds}">
+                                            刷新token有效时间(s)
+                                        </td>
+                                        <!-- <td th:text="${client.refreshTokenValiditySeconds}"></td>-->
+                                        <td class="col-xs-1" th:text="${client.autoApprove}">是否自动授权</td>
+                                        <td class="col-xs-1">
 
-                                                    <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                                                       <!-- <a  th:οnclick="'javascript:del('+this+','+${user.id}+');'" ></a>-->
-                                                        <!--现在的写法：-->
-<!--                                                        <a class="blue" href="#" th:onclick="addClient([[${client.clientId}]]);">-->
-<!--                                                            <i class="icon-zoom-in bigger-130" ></i>-->
-<!--                                                        </a>-->
-                                                        <a class="blue" href="#" data-toggle="modal" data-target="#myModal">
-                                                            <i class="icon-zoom-in bigger-130" ></i>
-                                                        </a>
+                                            <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                                                <!-- <a  th:οnclick="'javascript:del('+this+','+${user.id}+');'" ></a>-->
+                                                <!--现在的写法：-->
+                                                <!--                                                        <a class="blue" href="#" th:onclick="addClient([[${client.clientId}]]);">-->
+                                                <!--                                                            <i class="icon-zoom-in bigger-130" ></i>-->
+                                                <!--                                                        </a>-->
+                                                <a class="blue" href="#" data-toggle="modal" data-target="#myModal">
+                                                    <i class="icon-zoom-in bigger-130"></i>
+                                                </a>
 
-                                                        <a class="green" href="#"><i class="icon-pencil bigger-130"></i></a>
-                                                        <a class="red" href="#"><i class="icon-trash bigger-130"></i></a>
-                                                    </div>
+                                                <a class="green" href="#"  >
+                                                    <i class="icon-pencil bigger-130"></i>
+                                                </a>
 
-                                                    <div class="visible-xs visible-sm hidden-md hidden-lg">
-                                                        <div class="inline position-relative">
-                                                            <button class="btn btn-minier btn-yellow dropdown-toggle"
-                                                                    data-toggle="dropdown">
-                                                                <i class="icon-caret-down icon-only bigger-120"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-                                                                <li>
-                                                                    <a href="#" class="tooltip-info" data-rel="tooltip"
-                                                                       title="View" onclick="">
-                                                                        <span class="blue" ><i
+                                                <a class="red" href="#" data-toggle="modal" data-target="#delClientModal" th:data-whatever="${client.clientId}"><i class="icon-trash bigger-130"></i></a>
+                                            </div>
+
+                                            <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                                <div class="inline position-relative">
+                                                    <button class="btn btn-minier btn-yellow dropdown-toggle"
+                                                            data-toggle="dropdown">
+                                                        <i class="icon-caret-down icon-only bigger-120"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
+                                                        <li>
+                                                            <a href="#" class="tooltip-info" data-rel="tooltip"
+                                                               title="View" onclick="">
+                                                                        <span class="blue"><i
                                                                                 class="icon-zoom-in bigger-120"></i></span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#" class="tooltip-success" data-rel="tooltip"
-                                                                       title="Edit">
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="tooltip-success" data-rel="tooltip"
+                                                               title="Edit">
                                                                         <span class="green"><i
                                                                                 class="icon-edit bigger-120"></i></span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#" class="tooltip-error" data-rel="tooltip"
-                                                                       title="Delete">
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="tooltip-error" data-rel="tooltip"
+                                                               title="Delete">
                                                                         <span class="red"><i
                                                                                 class="icon-trash bigger-120"></i></span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
 
-                                                </td>
+                                        </td>
 
-                                                <td class="col-xs-1" ></td>
-                                            </tr>
-
-
-                                            </tbody>
-
-                                        </table>
-
-                                    </div>
-
-                                </div>
-
-                        </div><!-- /.col -->
-
-                    </div><!-- /.row -->
-
-                </div><!-- /.page-content -->
-
-            </div><!-- /.main-content -->
+                                        <td class="col-xs-1"></td>
+                                    </tr>
 
 
-            <!-- ace-settings-container -->
-            <div th:replace="common/body :: settings"></div>
+                                    </tbody>
 
-        </div><!-- /.main-container-inner -->
+                                </table>
 
-        <!--去到顶部-->
-        <a th:replace="common/body :: gototop"> </a>
+                            </div>
+
+                        </div>
+
+                    </div><!-- /.col -->
+
+                </div><!-- /.row -->
+
+            </div><!-- /.page-content -->
+
+        </div><!-- /.main-content -->
 
 
-    </div><!-- /.main-container -->
+        <!-- ace-settings-container -->
+        <div th:replace="common/body :: settings"></div>
+
+    </div><!-- /.main-container-inner -->
+
+    <!--去到顶部-->
+    <a th:replace="common/body :: gototop"> </a>
 
 
+</div><!-- /.main-container -->
 
 
-
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!-- Modal 添加客户端 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title" id="myModalLabel">客户端添加</h4>
             </div>
             <div class="modal-body">
-                    <form th:action="@{clients/add}" method="post" th:object="${client}">
-                        <div class="form-group">
-                            <label for="clientId">客户端id</label>
-                            <input type="email" th:field="*{clientId}"  class="form-control" id="clientId" placeholder="请输入客户端id"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="resids">资源id</label>
-                            <input type="text" th:field="*{resourceIds}" class="form-control" id="resids" placeholder="请输入资源id"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="secret">密钥</label>
-                            <input type="text" th:field="*{secret}" class="form-control" id="secret" placeholder="请输入密钥"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="scopeofauth">授权范围</label>
-                            <input type="text" class="form-control" id="scopeofauth" placeholder="请输入授权返回(all)"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="scopeofauth">授权方式</label><br>
-                            <input type="checkbox" name="wayofauth" >authorization_code &nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="checkbox" name="wayofauth" >password &nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="checkbox" name="wayofauth" >implicit<br>
-                            <input type="checkbox" name="wayofauth" >client_credentials &nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="checkbox" name="wayofauth" >refresh_token &nbsp;&nbsp;&nbsp;&nbsp;
-                        </div>
-                        <div class="form-group">
-                            <label for="redirecturl">回调地址</label>
-                            <input type="text" class="form-control" id="redirecturl" placeholder="请输入回调地址(http://127.0.0.1:9002/client/login)"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="permissions">权限</label>
-                            <input type="text" class="form-control" id="permissions" placeholder="请输入权限(可空)"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="token_valid_time">token有效时间(s)</label>
-                            <input type="number" class="form-control" id="token_valid_time" placeholder="请输入token有效时间(3600)"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="refresh_token_valid_time">刷新token有效时间(s)</label>
-                            <input type="number" class="form-control" id="refresh_token_valid_time" placeholder="请输入刷新token有效时间(360000)"/>
-                        </div>
-                        <div class="form-group">
-                            <label >是否自动授权</label><br>
-                            <input type="radio"  name="auto_auth"  checked="checked"/>是 &nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio"  name="auto_auth"  />否 <br>
-                        </div>
+                <form id="addclient" th:action="@{/clients/add}" method="post" th:object="${client}">
+                    <div class="form-group">
+                        <label for="clientId">客户端id</label>
+                        <input type="email" name="clientId" class="form-control" id="clientId" placeholder="请输入客户端id"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="resids">资源id</label>
+                        <input type="text" name="resourceIds" class="form-control" id="resids" placeholder="请输入资源id"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="secret">密钥</label>
+                        <input type="text" name="secret" class="form-control" id="secret" placeholder="请输入密钥"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="scopeofauth">授权范围</label>
+                        <input type="text" name="scopes" class="form-control" id="scopeofauth"
+                               placeholder="请输入授权返回(all)"/>
+                    </div>
+                    <div class="form-group">
+                        <label>授权方式</label><br>
+                        <input th:type="checkbox" name="authTypes" th:value="authorization_code">authorization_code
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" name="authTypes" th:value="password">password &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" name="authTypes" th:value="implicit">implicit<br>
+                        <input type="checkbox" name="authTypes" th:value="client_credentials">client_credentials &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" name="authTypes" th:value="refresh_token">refresh_token &nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="form-group">
+                        <label for="redirecturl">回调地址</label>
+                        <input name="redirectUris" type="text" class="form-control" id="redirecturl"
+                               placeholder="请输入回调地址(http://127.0.0.1:9002/client/login)"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="permissions">权限</label>
+                        <input name="authorities" type="text" class="form-control" id="permissions"
+                               placeholder="请输入权限(可空)"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="token_valid_time">token有效时间(s)</label>
+                        <input name="accessTokenValiditySeconds" type="number" class="form-control"
+                               id="token_valid_time" placeholder="请输入token有效时间(3600)"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="refresh_token_valid_time">刷新token有效时间(s)</label>
+                        <input name="refreshTokenValiditySeconds" type="number" class="form-control"
+                               id="refresh_token_valid_time" placeholder="请输入刷新token有效时间(360000)"/>
+                    </div>
+                    <div class="form-group">
+                        <label>是否自动授权</label><br>
+                        <input type="radio" name="autoApprove" checked="checked"/>是 &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" name="autoApprove"/>否 <br>
+                    </div>
 
-                        <!--<button type="submit" class="btn btn-default">Submit</button>-->
-                    </form>
+                    <!--<button type="submit" class="btn btn-default">Submit</button>-->
+                </form>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button id="addclient" type="button" class="btn btn-primary" onclick="addClient()">添加</button>
+                <button  type="submit" class="btn btn-primary" onclick="addClient()">添加</button>
             </div>
         </div>
     </div>
 </div>
 
+    <!-- Modal 删除客户端 -->
+    <div class="modal fade" id="delClientModal" tabindex="-1" role="dialog" aria-labelledby="delClientLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="delClientLabel">客户端删除</h4>
+                </div>
+                <div class="modal-body">
+                    <p>确定要删除吗?</p>
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button id="delclient" type="submit" class="btn btn-primary" onclick="delClient()">删除</button>
+                </div>
+            </div>
+        </div>
 
+    </div>
 </body>
 
 </html>
