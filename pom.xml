@@ -23,6 +23,8 @@
     <modules>
         <module>reserver</module>
         <module>authserver</module>
+        <module>mybatis-plus-code-gen</module>
+        <module>base</module>
 
     </modules>
 
