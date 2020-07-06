@@ -14,5 +14,4 @@ import com.sso.authserver.entity.OauthClientDetails;
 public interface OauthClientDetailsMapper extends BaseMapper<OauthClientDetails> {
 
 
-
 }

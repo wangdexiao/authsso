@@ -18,11 +18,11 @@ public class Result<T> {
         return result;
     }
 
-    public static <T> Result fail(T data){
+    public static <T> Result fail(String errMsg,T data){
         Result<T> result = new Result<T>();
         result.data = data;
         result.code = -1;
-        result.msg = "ok";
+        result.msg = errMsg;
         return result;
     }
 }
