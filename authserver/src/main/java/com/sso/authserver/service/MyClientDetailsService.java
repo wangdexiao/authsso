@@ -1,7 +1,9 @@
 package com.sso.authserver.service;
 
 import com.sso.authserver.entity.ClientInfo;
+import com.sso.authserver.entity.OauthClientDetails;
 import com.sso.authserver.mapper.ClientMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
@@ -16,22 +18,22 @@ import java.util.*;
 @Service
 public class MyClientDetailsService implements ClientDetailsService {
 
-    @Resource
-    private ClientMapper clientMapper;
+    @Autowired
+    private IOauthClientDetailsService clientDetailsService;
 
     @Override
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
 
-        ClientInfo clientInfo = clientMapper.loadClientByClientId(clientId);
+        OauthClientDetails clientInfo = clientDetailsService.getById(clientId);
         BaseClientDetails baseClientDetails = new BaseClientDetails();
-        String secret = clientInfo.getSecret();
+        String secret = clientInfo.getClientSecret();
         String[] resourceIds = clientInfo.getResourceIds().split(",");
-        String[] authTypes = clientInfo.getAuthTypes().split(",");
-        int accessTokenValiditySeconds = clientInfo.getAccessTokenValiditySeconds();
-        int refreshTokenValiditySeconds = clientInfo.getRefreshTokenValiditySeconds();
-        String[] scopes = clientInfo.getScopes().split(",");
-        Boolean autoApprove = clientInfo.getAutoApprove();
-        String[] rediectUris = clientInfo.getRedirectUris().split(",");
+        String[] authTypes = clientInfo.getAuthorizedGrantTypes().split(",");
+        int accessTokenValiditySeconds = clientInfo.getAccessTokenValidity();
+        int refreshTokenValiditySeconds = clientInfo.getRefreshTokenValidity();
+        String[] scopes = clientInfo.getScope().split(",");
+        Boolean autoApprove = clientInfo.isAutoapprove();
+        String[] rediectUris = clientInfo.getWebServerRedirectUri().split(",");
         List<String> authorities = Arrays.asList(clientInfo.getAuthorities().split(","));
 
         baseClientDetails.setClientId(clientId);
