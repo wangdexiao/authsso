@@ -2,355 +2,121 @@
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-	<head>
+<head>
+	<meta charset="utf-8" />
+	<th:block th:replace="/common/common :: public-css"></th:block>
 
-		<meta charset="utf-8" />
+</head>
 
-		<title>��¼ҳ�� - Bootstrap��̨����ϵͳģ��Ace����</title>
 
-		<meta name="keywords" content="Bootstrapģ��,Bootstrapģ������,Bootstrap�̳�,Bootstrap����" />
 
-		<meta name="description" content="վ���ز��ṩBootstrapģ��,Bootstrap�̳�,Bootstrap���ķ�������Bootstrap�������" />
+<body class="login-layout">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+	<div class="main-container">
 
+		<div class="main-content">
 
-		<!-- basic styles -->
+			<div class="row">
 
+				<div class="col-sm-10 col-sm-offset-1">
 
+					<div class="login-container">
 
-		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+						<div class="center">
+							<h1>
+								<i class="icon-leaf green"></i>
+								<span class="red">统一</span> <span class="white">登录界面</span>
+							</h1>
+						</div>
 
-		<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/3.2.1/css/font-awesome.min.css">
+						<div class="space-6"></div>
 
 
 
-		<!--[if IE 7]>
+						<div class="position-relative">
 
-		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
+							<!--登录框-->
+							<div id="login-box" class="login-box visible widget-box no-border">
 
-		<![endif]-->
+								<div class="widget-body">
 
+									<div class="widget-main">
 
+										<h4 class="header blue lighter bigger">
+											<i class="icon-coffee green"></i>请输入你的账号
+										</h4>
 
-		<!-- page specific plugin styles -->
+										<div class="space-6"></div>
 
+										<form th:method="post" th:action="@{/login}">
+											<fieldset>
+												<!--账号输入框-->
+												<label class="block clearfix">
+													<span class="block input-icon input-icon-right">
+														<input type="text" name="username" class="form-control" placeholder="请输入用户名" /><i class="icon-user"></i>
+													</span>
+												</label>
+												<!--密码输入框-->
+												<label class="block clearfix">
+													<span class="block input-icon input-icon-right">
+														<input type="password" name="passwd" class="form-control" placeholder="Password" /><i class="icon-lock"></i>
+													</span>
+												</label>
 
+												<div class="space"></div>
 
-		<!-- fonts -->
+												<div class="clearfix">
 
-
-
-		 
-
-
-
-		<!-- ace styles -->
-
-
-
-		<link rel="stylesheet" href="assets/css/ace.min.css" />
-
-		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
-
-
-
-		<!--[if lte IE 8]>
-
-		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
-
-		<![endif]-->
-
-
-
-		<!-- inline styles related to this page -->
-
-
-
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-
-
-
-		<!--[if lt IE 9]>
-
-		<script src="assets/js/html5shiv.js"></script>
-
-		<script src="assets/js/respond.min.js"></script>
-
-		<![endif]-->
-
-	</head>
-
-
-
-	<body class="login-layout">
-
-		<div class="main-container">
-
-			<div class="main-content">
-
-				<div class="row">
-
-					<div class="col-sm-10 col-sm-offset-1">
-
-						<div class="login-container">
-
-							<div class="center">
-
-								<h1>
-
-									<i class="icon-leaf green"></i>
-
-									<span class="red">Ace</span>
-
-									<span class="white">Application</span>
-
-								</h1>
-
-								<h4 class="blue">&copy; Company Name</h4>
-
-							</div>
-
-
-
-							<div class="space-6"></div>
-
-
-
-							<div class="position-relative">
-
-								<div id="login-box" class="login-box visible widget-box no-border">
-
-									<div class="widget-body">
-
-										<div class="widget-main">
-
-											<h4 class="header blue lighter bigger">
-
-												<i class="icon-coffee green"></i>
-
-												Please Enter Your Information
-
-											</h4>
-
-
-
-											<div class="space-6"></div>
-
-
-
-											<form>
-
-												<fieldset>
-
-													<label class="block clearfix">
-
-														<span class="block input-icon input-icon-right">
-
-															<input type="text" class="form-control" placeholder="Username" />
-
-															<i class="icon-user"></i>
-
-														</span>
-
+													<label class="inline">
+														<input type="checkbox" class="ace" /><span class="lbl"> 记住我</span>
 													</label>
 
+													<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+														<i class="icon-key"></i>登录
+													</button>
 
+												</div>
+												<div class="space-4"></div>
+											</fieldset>
+										</form>
 
-													<label class="block clearfix">
 
-														<span class="block input-icon input-icon-right">
+										<!--第三方登录暂时隐藏-->
+										<div class="social-or-login center" hidden="hidden">
+											<span class="bigger-110">Or Login Using</span>
+										</div>
+										<div class="social-login center" hidden="hidden">
+											<a class="btn btn-primary"><i class="icon-facebook"></i></a>
+											<a class="btn btn-info"><i class="icon-twitter"></i></a>
+											<a class="btn btn-danger"><i class="icon-google-plus"></i></a>
+										</div>
 
-															<input type="password" class="form-control" placeholder="Password" />
+									</div><!-- /widget-main -->
 
-															<i class="icon-lock"></i>
 
-														</span>
 
-													</label>
+									<div class="toolbar clearfix">
 
+										<div>
 
+											<a href="#" onclick="show_box('forgot-box'); return false;" class="forgot-password-link">
 
-													<div class="space"></div>
+												<i class="icon-arrow-left"></i>
 
+												忘记密码
 
-
-													<div class="clearfix">
-
-														<label class="inline">
-
-															<input type="checkbox" class="ace" />
-
-															<span class="lbl"> Remember Me</span>
-
-														</label>
-
-
-
-														<button type="button" class="width-35 pull-right btn btn-sm btn-primary">
-
-															<i class="icon-key"></i>
-
-															Login
-
-														</button>
-
-													</div>
-
-
-
-													<div class="space-4"></div>
-
-												</fieldset>
-
-											</form>
-
-
-
-											<div class="social-or-login center">
-
-												<span class="bigger-110">Or Login Using</span>
-
-											</div>
-
-
-
-											<div class="social-login center">
-
-												<a class="btn btn-primary">
-
-													<i class="icon-facebook"></i>
-
-												</a>
-
-
-
-												<a class="btn btn-info">
-
-													<i class="icon-twitter"></i>
-
-												</a>
-
-
-
-												<a class="btn btn-danger">
-
-													<i class="icon-google-plus"></i>
-
-												</a>
-
-											</div>
-
-										</div><!-- /widget-main -->
-
-
-
-										<div class="toolbar clearfix">
-
-											<div>
-
-												<a href="#" onclick="show_box('forgot-box'); return false;" class="forgot-password-link">
-
-													<i class="icon-arrow-left"></i>
-
-													I forgot my password
-
-												</a>
-
-											</div>
-
-
-
-											<div>
-
-												<a href="#" onclick="show_box('signup-box'); return false;" class="user-signup-link">
-
-													I want to register
-
-													<i class="icon-arrow-right"></i>
-
-												</a>
-
-											</div>
+											</a>
 
 										</div>
 
-									</div><!-- /widget-body -->
-
-								</div><!-- /login-box -->
 
 
+										<div>
 
-								<div id="forgot-box" class="forgot-box widget-box no-border">
+											<a href="#" onclick="show_box('signup-box'); return false;" class="user-signup-link">
 
-									<div class="widget-body">
-
-										<div class="widget-main">
-
-											<h4 class="header red lighter bigger">
-
-												<i class="icon-key"></i>
-
-												Retrieve Password
-
-											</h4>
-
-
-
-											<div class="space-6"></div>
-
-											<p>
-
-												Enter your email and to receive instructions
-
-											</p>
-
-
-
-											<form>
-
-												<fieldset>
-
-													<label class="block clearfix">
-
-														<span class="block input-icon input-icon-right">
-
-															<input type="email" class="form-control" placeholder="Email" />
-
-															<i class="icon-envelope"></i>
-
-														</span>
-
-													</label>
-
-
-
-													<div class="clearfix">
-
-														<button type="button" class="width-35 pull-right btn btn-sm btn-danger">
-
-															<i class="icon-lightbulb"></i>
-
-															Send Me!
-
-														</button>
-
-													</div>
-
-												</fieldset>
-
-											</form>
-
-										</div><!-- /widget-main -->
-
-
-
-										<div class="toolbar center">
-
-											<a href="#" onclick="show_box('login-box'); return false;" class="back-to-login-link">
-
-												Back to login
+												注册
 
 												<i class="icon-arrow-right"></i>
 
@@ -358,252 +124,271 @@
 
 										</div>
 
-									</div><!-- /widget-body -->
+									</div>
 
-								</div><!-- /forgot-box -->
+								</div><!-- /widget-body -->
 
+							</div><!-- /login-box -->
 
 
-								<div id="signup-box" class="signup-box widget-box no-border">
+							<!--忘记密码-->
+							<div id="forgot-box" class="forgot-box widget-box no-border">
 
-									<div class="widget-body">
+								<div class="widget-body">
 
-										<div class="widget-main">
+									<div class="widget-main">
 
-											<h4 class="header green lighter bigger">
+										<h4 class="header red lighter bigger">
 
-												<i class="icon-group blue"></i>
+											<i class="icon-key"></i>
 
-												New User Registration
+											Retrieve Password
 
-											</h4>
+										</h4>
 
 
 
-											<div class="space-6"></div>
+										<div class="space-6"></div>
 
-											<p> Enter your details to begin: </p>
+										<p>
 
+											Enter your email and to receive instructions
 
+										</p>
 
-											<form>
 
-												<fieldset>
 
-													<label class="block clearfix">
+										<form>
 
-														<span class="block input-icon input-icon-right">
+											<fieldset>
 
-															<input type="email" class="form-control" placeholder="Email" />
+												<label class="block clearfix">
 
-															<i class="icon-envelope"></i>
+													<span class="block input-icon input-icon-right">
 
-														</span>
+														<input type="email" class="form-control" placeholder="Email" />
 
-													</label>
+														<i class="icon-envelope"></i>
 
+													</span>
 
+												</label>
 
-													<label class="block clearfix">
 
-														<span class="block input-icon input-icon-right">
 
-															<input type="text" class="form-control" placeholder="Username" />
+												<div class="clearfix">
 
-															<i class="icon-user"></i>
+													<button type="button" class="width-35 pull-right btn btn-sm btn-danger">
 
-														</span>
+														<i class="icon-lightbulb"></i>
 
-													</label>
+														Send Me!
 
+													</button>
 
+												</div>
 
-													<label class="block clearfix">
+											</fieldset>
 
-														<span class="block input-icon input-icon-right">
+										</form>
 
-															<input type="password" class="form-control" placeholder="Password" />
+									</div><!-- /widget-main -->
 
-															<i class="icon-lock"></i>
 
-														</span>
 
-													</label>
+									<div class="toolbar center">
 
+										<a href="#" onclick="show_box('login-box'); return false;" class="back-to-login-link">
 
+											Back to login
 
-													<label class="block clearfix">
+											<i class="icon-arrow-right"></i>
 
-														<span class="block input-icon input-icon-right">
+										</a>
 
-															<input type="password" class="form-control" placeholder="Repeat password" />
+									</div>
 
-															<i class="icon-retweet"></i>
+								</div><!-- /widget-body -->
 
-														</span>
+							</div><!-- /forgot-box -->
 
-													</label>
 
+							<!--注册框-->
+							<div id="signup-box" class="signup-box widget-box no-border">
 
+								<div class="widget-body">
 
-													<label class="block">
+									<div class="widget-main">
 
-														<input type="checkbox" class="ace" />
+										<h4 class="header green lighter bigger">
 
-														<span class="lbl">
+											<i class="icon-group blue"></i>
 
-															I accept the
+											New User Registration
 
-															<a href="#">User Agreement</a>
+										</h4>
 
-														</span>
 
-													</label>
 
+										<div class="space-6"></div>
 
+										<p> Enter your details to begin: </p>
 
-													<div class="space-24"></div>
 
 
+										<form>
 
-													<div class="clearfix">
+											<fieldset>
 
-														<button type="reset" class="width-30 pull-left btn btn-sm">
+												<label class="block clearfix">
 
-															<i class="icon-refresh"></i>
+													<span class="block input-icon input-icon-right">
 
-															Reset
+														<input type="email" class="form-control" placeholder="Email" />
 
-														</button>
+														<i class="icon-envelope"></i>
 
+													</span>
 
+												</label>
 
-														<button type="button" class="width-65 pull-right btn btn-sm btn-success">
 
-															Register
 
-															<i class="icon-arrow-right icon-on-right"></i>
+												<label class="block clearfix">
 
-														</button>
+													<span class="block input-icon input-icon-right">
 
-													</div>
+														<input type="text" class="form-control" placeholder="Username" />
 
-												</fieldset>
+														<i class="icon-user"></i>
 
-											</form>
+													</span>
 
-										</div>
+												</label>
 
 
 
-										<div class="toolbar center">
+												<label class="block clearfix">
 
-											<a href="#" onclick="show_box('login-box'); return false;" class="back-to-login-link">
+													<span class="block input-icon input-icon-right">
 
-												<i class="icon-arrow-left"></i>
+														<input type="password" class="form-control" placeholder="Password" />
 
-												Back to login
+														<i class="icon-lock"></i>
 
-											</a>
+													</span>
 
-										</div>
+												</label>
 
-									</div><!-- /widget-body -->
 
-								</div><!-- /signup-box -->
 
-							</div><!-- /position-relative -->
+												<label class="block clearfix">
 
-						</div>
+													<span class="block input-icon input-icon-right">
 
-					</div><!-- /.col -->
+														<input type="password" class="form-control" placeholder="Repeat password" />
 
-				</div><!-- /.row -->
+														<i class="icon-retweet"></i>
 
-			</div>
+													</span>
 
-		</div><!-- /.main-container -->
+												</label>
 
 
 
-		<!-- basic scripts -->
+												<label class="block">
 
+													<input type="checkbox" class="ace" />
 
+													<span class="lbl">
 
-		<!--[if !IE]> -->
+														I accept the
 
+														<a href="#">User Agreement</a>
 
+													</span>
 
-		<script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+												</label>
 
 
 
-		<!-- <![endif]-->
+												<div class="space-24"></div>
 
 
 
-		<!--[if IE]>
+												<div class="clearfix">
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+													<button type="reset" class="width-30 pull-left btn btn-sm">
 
-<![endif]-->
+														<i class="icon-refresh"></i>
 
+														Reset
 
+													</button>
 
-		<!--[if !IE]> -->
 
 
+													<button type="button" class="width-65 pull-right btn btn-sm btn-success">
 
-		<script type="text/javascript">
+														Register
 
-			window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+														<i class="icon-arrow-right icon-on-right"></i>
 
-		</script>
+													</button>
 
+												</div>
 
+											</fieldset>
 
-		<!-- <![endif]-->
+										</form>
 
+									</div>
 
 
-		<!--[if IE]>
 
-<script type="text/javascript">
+									<div class="toolbar center">
 
- window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+										<a href="#" onclick="show_box('login-box'); return false;" class="back-to-login-link">
 
-</script>
+											<i class="icon-arrow-left"></i>
 
-<![endif]-->
+											Back to login
 
+										</a>
 
+									</div>
 
-		<script type="text/javascript">
+								</div><!-- /widget-body -->
 
-			if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+							</div><!-- /signup-box -->
 
-		</script>
+						</div><!-- /position-relative -->
 
+					</div>
 
+				</div><!-- /.col -->
 
-		<!-- inline scripts related to this page -->
+			</div><!-- /.row -->
 
+		</div>
 
+	</div><!-- /.main-container -->
 
-		<script type="text/javascript">
+<th:block th:replace="/common/common :: public-js"></th:block>
+	<script th:inline="javascript">
 
+		$(function ($) {
 			function show_box(id) {
 
-			 jQuery('.widget-box.visible').removeClass('visible');
+				$('.widget-box.visible').removeClass('visible');
 
-			 jQuery('#'+id).addClass('visible');
+				$('#' + id).addClass('visible');
 
 			}
+		});
 
-		</script>
 
-	
-
+	</script>
 </body>
 
 </html>

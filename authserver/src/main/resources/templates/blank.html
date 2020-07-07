@@ -3,56 +3,63 @@
 <head>
 	<meta charset="utf-8" />
 	<title>控制台 - Bootstrap后台管理系统模版Ace下载</title>
-	<script th:replace="/common/head::static"></script>
+	<th:block th:replace="/common/common :: public-css"/>
 </head>
 
 <body>
-<!--头部-->
-<div th:replace="common/body :: navbar"></div>
+	<!--头部-->
+	<div th:replace="common/body :: navbar"></div>
 
-<!--主体-->
-<div class="main-container" id="main-container">
+	<!--主体-->
+	<div class="main-container" id="main-container">
 
-	<script type="text/javascript">
-		try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+		<script type="text/javascript">
+			try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+		</script>
+
+		<div class="main-container-inner">
+			<!--左侧菜单栏-->
+			<div th:replace="common/body :: sidebar"></div>
+
+			<div class="main-content">
+
+				<!--路径栏-->
+				<div th:replace="common/body :: breadcrumbs"></div>
+
+				<!--页面内容-->
+				<div class="page-content">
+
+					<div class="row">
+
+						<div class="col-xs-12">
+
+
+						</div><!-- /.col -->
+
+					</div><!-- /.row -->
+
+				</div><!-- /.page-content -->
+
+			</div><!-- /.main-content -->
+
+
+			<!-- ace-settings-container -->
+			<div th:replace="common/body :: settings"></div>
+
+		</div><!-- /.main-container-inner -->
+
+		<!--去到顶部-->
+		<a th:replace="common/body :: gototop"> </a>
+
+	</div><!-- /.main-container -->
+
+	<th:block th:replace="/common/common :: public-js"/>
+
+	<script th:inline="javascript">
+		jQuery(function ($) {
+
+		});
 	</script>
-
-	<div class="main-container-inner">
-		<!--左侧菜单栏-->
-		<div th:replace="common/body :: sidebar"></div>
-
-		<div class="main-content">
-
-			<!--路径栏-->
-			<div th:replace="common/body :: breadcrumbs"></div>
-
-			<!--页面内容-->
-			<div class="page-content">
-
-				<div class="row">
-
-					<div class="col-xs-12">
-
-
-					</div><!-- /.col -->
-
-				</div><!-- /.row -->
-
-			</div><!-- /.page-content -->
-
-		</div><!-- /.main-content -->
-
-
-		<!-- ace-settings-container -->
-		<div th:replace="common/body :: settings"></div>
-
-	</div><!-- /.main-container-inner -->
-
-	<!--去到顶部-->
-	<a th:replace="common/body :: gototop"> </a>
-
-</div><!-- /.main-container -->
-
 
 </body>
 

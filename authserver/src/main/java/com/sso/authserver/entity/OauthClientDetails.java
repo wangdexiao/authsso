@@ -19,18 +19,18 @@ import lombok.EqualsAndHashCode;
  * @since 2020-07-06
  */
 @Data
-public class OauthClientDetails {
+public class OauthClientDetails extends BaseEntity{
 
-    private static final long serialVersionUID = 1L;
+//    private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id")
-    private long id;
-    @TableField(value = "create_time",fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
-    @TableField(value = "update_time",fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
-    @TableField(value = "del")
-    private int del;
+//    @TableId(value = "id")
+//    private long id;
+//    @TableField(value = "create_time",fill = FieldFill.INSERT)
+//    private LocalDateTime createTime;
+//    @TableField(value = "update_time",fill = FieldFill.INSERT_UPDATE)
+//    private LocalDateTime updateTime;
+//    @TableField(value = "del")
+//    private int del;
 
 
     private String clientId;

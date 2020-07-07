@@ -1,8 +1,6 @@
 package com.sso.authserver.service;
 
-import com.sso.authserver.entity.ClientInfo;
 import com.sso.authserver.entity.OauthClientDetails;
-import com.sso.authserver.mapper.ClientMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,8 +10,10 @@ import org.springframework.security.oauth2.provider.ClientRegistrationException;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class MyClientDetailsService implements ClientDetailsService {

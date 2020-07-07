@@ -1,14 +1,12 @@
-package com.sso.authserver.controller;
+package com.sso.authserver.controller.security.manage;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.sso.authserver.entity.ClientInfo;
 import com.sso.authserver.entity.OauthClientDetails;
 import com.sso.authserver.entity.Result;
 import com.sso.authserver.service.IOauthClientDetailsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,7 +24,7 @@ public class ClientManagerController {
     @Autowired
     private IOauthClientDetailsService clientDetailsService;
 
-    @GetMapping("/")
+    @GetMapping({"/",""})
     public String getClients(Map<String,Object> map){
         List<OauthClientDetails> clientDetails = clientDetailsService.list();
         map.put("clients", clientDetails);

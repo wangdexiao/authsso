@@ -2,6 +2,7 @@ logging:
     level:
         web: info
         root: info
+        com.sso: debug
 mybatis:
     mapper-locations: classpath:mapper/*.xml
     type-aliases-package: com.sso.authserver.entity
@@ -14,7 +15,7 @@ spring:
     datasource:
         username: root
         password: root
-        url: jdbc:mysql://127.0.0.1:3306/security?serverTimezone-GMT%2b8%useUnicode=true&characterEncoding=utf8
+        url: jdbc:mysql://139.9.139.63:3306/security2?serverTimezone-GMT%2b8%useUnicode=true&characterEncoding=utf8
         driver-class-name: com.mysql.jdbc.Driver
         type: com.alibaba.druid.pool.DruidDataSource
         #数据源其他配置，在DruidConfig配置类中手动绑定
@@ -33,6 +34,8 @@ spring:
         cache: false
         prefix: classpath:/templates/
     mvc:
+        favicon:
+            enable: false
         # 应该以什么样的路径来访问静态资源,这表示只有静态资源的访问路径为/static/ 时才会处理(如http://localhost:8080/static/css/base.css)
         static-path-pattern: /static/**
     resources:
